@@ -7,7 +7,10 @@
   "description": "An extension for your browser that allows you to track the transaction status across various cryptocurrency networks.",
   "scripts": {
     "dev": "vite",
-    "build_v3": "vite build",
+    "build_v3": "MANIFEST_VERSION=3 vite build ./public/ --mode production",
+    "build_v2": "MANIFEST_VERSION=2 vite build ./src --mode production",
+    "serve_v3": "vite build MANIFEST_VERSION=3 --mode development",
+    "serve_v2": "vite build MANIFEST_VERSION=2 --mode development",
     "preview": "vite preview"
   },
   "dependencies": {
