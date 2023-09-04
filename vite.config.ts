@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
   return {
     root: 'src',
     build: {
-      outDir: '../dist',
+      outDir: `../dist/app_${Number(env.MANIFEST_VERSION)}`,
     },
     resolve: {
       alias: {
