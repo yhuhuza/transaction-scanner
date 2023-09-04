@@ -1,37 +1,31 @@
 import pkg from '../../package.json';
 
 const sharedManifest: Partial<chrome.runtime.ManifestBase> = {
-  content_scripts: [
-    {
-      js: ['src/entries/contentScript/primary/main.ts'],
-      matches: ['*://*/*'],
-      run_at: 'document_end',
-    },
-  ],
   icons: {
-    16: 'icons/logo-icon.png',
-    19: 'icons/logo-icon.png',
-    32: 'icons/logo-icon.png',
-    38: 'icons/logo-icon.png',
-    48: 'icons/logo-icon.png',
-    64: 'icons/logo-icon.png',
-    96: 'icons/logo-icon.png',
-    128: 'icons/logo-icon.png',
-    256: 'icons/logo-icon.png',
-    512: 'icons/logo-icon.png',
+    16: 'logo/logo-icon.png',
+    19: 'logo/logo-icon.png',
+    32: 'logo/logo-icon.png',
+    38: 'logo/logo-icon.png',
+    48: 'logo/logo-icon.png',
+    64: 'logo/logo-icon.png',
+    96: 'logo/logo-icon.png',
+    128: 'logo/logo-icon.png',
+    256: 'logo/logo-icon.png',
+    512: 'logo/logo-icon.png',
   },
 
-  permissions: ['alarms', 'storage', 'cookies', 'nativeMessaging'],
-  web_accessible_resources: ['*.css', 'fonts/*.woff2'],
+  permissions: ['alarms', 'storage', 'cookies'],
 };
 
 const browserAction = {
   default_icon: {
-    16: 'icons/logo-icon.png',
-    19: 'icons/logo-icon.png',
-    32: 'icons/logo-icon.png',
-    38: 'icons/logo-icon.png',
+    16: 'logo/logo-icon.png',
+    19: 'logo/logo-icon.png',
+    32: 'logo/logo-icon.png',
+    38: 'logo/logo-icon.png',
   },
+  "default_title": "Transaction Scanner",
+  "default_popup": "index.html",
 };
 
 const ManifestV2 = {
@@ -41,6 +35,7 @@ const ManifestV2 = {
     persistent: false,
   },
   browser_action: browserAction,
+  web_accessible_resources: ['*.css', 'fonts/*.woff2'],
   permissions: [...sharedManifest.permissions, '*://*/*'],
 };
 
@@ -48,9 +43,13 @@ const ManifestV3 = {
   ...sharedManifest,
   action: browserAction,
   background: {
-    service_worker: 'src/entries/background/serviceWorker.ts',
+    service_worker: '/background/index.ts',
   },
   host_permissions: ['*://*/*'],
+  "web_accessible_resources": [{ 
+    "resources": ["*.css", "fonts/*.woff2"],
+    "matches": ["<all_urls>"]
+  }]
 };
 
 export function getManifest(manifestVersion: number): chrome.runtime.ManifestV2 | chrome.runtime.ManifestV3 {
