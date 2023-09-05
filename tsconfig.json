@@ -29,7 +29,7 @@
     "forceConsistentCasingInFileNames": true,
     "lib": ["esnext", "dom"]
   },
-  "include": ["src/**/*.ts", "src/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.vue", "./.eslintrc.js"],
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs",
