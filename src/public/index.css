@@ -7,4 +7,6 @@ body {
 
 #app {
     height: inherit;
+    box-sizing: border-box;
+    overflow: hidden;
 }
