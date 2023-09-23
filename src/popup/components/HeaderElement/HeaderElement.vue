@@ -1,9 +1,9 @@
 <template>
-    <div class="header-element">
+    <header class="header-element">
       <div class="header-element__logo block"></div>
-      <div class="header-element__input block">Input</div>
+      <button class="header-element__input block">Input</button>
       <div class="header-element__settings block"></div>
-    </div>
+      </header>
 </template>
   
 <script lang="ts" setup></script>
