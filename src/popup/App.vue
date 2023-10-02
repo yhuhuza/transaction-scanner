@@ -1,15 +1,10 @@
 <template>
   <div class="transaction-scanner">
-    <HeaderElement></HeaderElement>
+    <RouterView></RouterView>
   </div>
 </template>
 
-<script setup>
-import HeaderElement from './components/Header/HeaderElement.vue';
+<script lang="ts" setup>
 </script>
 
-<style lang="scss" scoped>
-.transaction-scanner {
-  border: 1px solid red;
-}
-</style>
+<style lang="scss" scoped></style>

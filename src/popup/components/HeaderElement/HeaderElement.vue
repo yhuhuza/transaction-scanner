@@ -10,9 +10,9 @@
         <option value="professional">Toncoin</option>
         <option value="corporate">Shiba Inu</option>
       </select>
-      <div class="header-element__settings">
+      <router-link to="/settings/" class="header-element__settings">
         <img src="../../../assets/logo/settings-sign.svg" />
-      </div>
+      </router-link>
     </header>
 </template>
   
