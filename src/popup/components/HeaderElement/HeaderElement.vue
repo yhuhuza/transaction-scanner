@@ -10,7 +10,7 @@
         <option value="professional">Toncoin</option>
         <option value="corporate">Shiba Inu</option>
       </select>
-      <router-link to="/settings/" class="header-element__settings">
+      <router-link to="/settings" class="header-element__settings">
         <img src="../../../assets/logo/settings-sign.svg" />
       </router-link>
     </header>
@@ -21,11 +21,10 @@
 <style lang="scss" scoped>
 
 .header-element {
-  position: relative;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
   &__select {
     box-sizing: border-box;
     position: relative;
@@ -44,15 +43,5 @@
     width: 30px;
     height: 30px;
   }
-}
-
-ul, ol{
-	list-style: none;
-	padding: 0;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
 }
 </style>
