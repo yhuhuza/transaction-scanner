@@ -10,15 +10,59 @@
       <div class="settings-element__logo">
         <img src="../../../assets/logo/light-theme.svg" alt="moon" />
       </div>
-
       <label class="switch">
         <input type="checkbox">
         <span class="slider round"></span>
       </label> 
-
       <div class="settings-element__logo">
         <img src="../../../assets/logo/dark-theme.svg" alt="moon" />
       </div>
+    </div>
+
+
+    <div class="settings-element__menu">
+
+      <div class="settings-element__button">
+        <div class="settings-element__button_logo">
+          <img src="../../../assets/logo/globe-sign.svg" alt="globe" />
+        </div>
+        <p class="settings-element__button_text">Choose your language</p>
+        <div class="settings-element__button_arrow">
+          <img src="../../../assets/logo/arrow-forward.svg" alt="arrow" />
+        </div>
+      </div>
+
+      <div class="settings-element__button">
+        <div class="settings-element__button_logo">
+          <img src="../../../assets/logo/rubbish-sign.svg" alt="globe" />
+        </div>
+        <p class="settings-element__button_text">Delete saved transactions</p>
+        <div class="settings-element__button_arrow">
+          <img src="../../../assets/logo/arrow-forward.svg" alt="arrow" />
+        </div>
+      </div>
+
+      <div class="settings-element__button">
+        <div class="settings-element__button_logo">
+          <img src="../../../assets/logo/bitcoin-sign.svg" alt="globe" />
+        </div>
+        <p class="settings-element__button_text">Choose your currency for comparison</p>
+        <div class="settings-element__button_arrow">
+          <img src="../../../assets/logo/arrow-forward.svg" alt="arrow" />
+        </div>
+      </div>
+
+      <div class="settings-element__button">
+        <div class="settings-element__button_logo">
+          <img src="../../../assets/logo/help-sign.svg" alt="globe" />
+        </div>
+        <p class="settings-element__button_text">Help & Support</p>
+        <div class="settings-element__button_arrow">
+          <img src="../../../assets/logo/arrow-forward.svg" alt="arrow" />
+        </div>
+      </div>
+
+
     </div>
   </section>
 </template>
@@ -45,11 +89,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 30px;
   }
   &__logo {
     margin: 0 20px;
     width: 28px;
     height: 28px;
+  }
+  &__menu {
+    display: flex;
+    flex-direction: column;
+  }
+  &__button {
+    cursor: pointer;
+    padding: 20px 30px;
+    border-radius: 16px;
+    border: 1px solid #000;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &_logo {
+      width: 24px;
+      height: 24px;
+    }
   }
 }
 
