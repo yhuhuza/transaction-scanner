@@ -1,8 +1,11 @@
 <template>
   <div class="transaction-scanner">
     <Transition name="fade" mode="out-in">
-      <HeaderElement v-if="showHeader"></HeaderElement>
-      <RouterView></RouterView>
+      <section v-if="mainPage">
+        <HeaderElement ></HeaderElement>
+        <MainPage></MainPage>
+      </section>
+      <RouterView v-else></RouterView>
     </Transition>
   </div>
 </template>
@@ -12,8 +15,9 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 
 import HeaderElement from './components/HeaderElement/HeaderElement.vue';
+import MainPage from './components/MainPage/MainPage.vue';
 
-const showHeader = computed(() => {
+const mainPage = computed(() => {
   const { path } = useRoute();
   return path === '/' || path === '/index.html';
 });
@@ -27,7 +31,7 @@ const showHeader = computed(() => {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .fade-leave-from {
