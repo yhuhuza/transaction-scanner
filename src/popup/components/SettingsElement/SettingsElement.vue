@@ -10,64 +10,33 @@
       <div class="settings-element__logo">
         <img src="../../../assets/logo/light-theme.svg" alt="moon" />
       </div>
+
       <label class="switch">
-        <input type="checkbox">
+        <input type="checkbox" :checked="isDark" @click="changeColorScheme()">
         <span class="slider round"></span>
       </label> 
+
       <div class="settings-element__logo">
         <img src="../../../assets/logo/dark-theme.svg" alt="moon" />
       </div>
     </div>
-
-
-    <div class="settings-element__menu">
-
-      <div class="settings-element__button">
-        <div class="settings-element__button_logo">
-          <img src="../../../assets/logo/globe-sign.svg" alt="globe" />
-        </div>
-        <p class="settings-element__button_text">Choose your language</p>
-        <div class="settings-element__button_arrow">
-          <img src="../../../assets/logo/arrow-forward.svg" alt="arrow" />
-        </div>
-      </div>
-
-      <div class="settings-element__button">
-        <div class="settings-element__button_logo">
-          <img src="../../../assets/logo/rubbish-sign.svg" alt="globe" />
-        </div>
-        <p class="settings-element__button_text">Delete saved transactions</p>
-        <div class="settings-element__button_arrow">
-          <img src="../../../assets/logo/arrow-forward.svg" alt="arrow" />
-        </div>
-      </div>
-
-      <div class="settings-element__button">
-        <div class="settings-element__button_logo">
-          <img src="../../../assets/logo/bitcoin-sign.svg" alt="globe" />
-        </div>
-        <p class="settings-element__button_text">Choose your currency for comparison</p>
-        <div class="settings-element__button_arrow">
-          <img src="../../../assets/logo/arrow-forward.svg" alt="arrow" />
-        </div>
-      </div>
-
-      <div class="settings-element__button">
-        <div class="settings-element__button_logo">
-          <img src="../../../assets/logo/help-sign.svg" alt="globe" />
-        </div>
-        <p class="settings-element__button_text">Help & Support</p>
-        <div class="settings-element__button_arrow">
-          <img src="../../../assets/logo/arrow-forward.svg" alt="arrow" />
-        </div>
-      </div>
-
-
-    </div>
+    <settings-menu></settings-menu>
   </section>
 </template>
   
 <script lang="ts" setup>
+import { useDark, useToggle} from '@vueuse/core';
+
+import SettingsMenu from './SettingsMenu.vue';
+
+const isDark = useDark({
+  selector: "body",
+  attribute: "class",
+  valueDark: "dark",
+  valueLight: "light",
+});
+
+const changeColorScheme = useToggle(isDark);
 </script>
   
 <style lang="scss" scoped>
