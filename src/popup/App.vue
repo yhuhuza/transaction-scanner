@@ -24,7 +24,11 @@ const mainPage = computed(() => {
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .transaction-scanner {
   box-sizing: border-box;
 }
