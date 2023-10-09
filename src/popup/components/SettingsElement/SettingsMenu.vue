@@ -26,7 +26,8 @@ height: inherit;
     align-items: center;
     margin-bottom: 30px;
     &_text {
-    font-size: 24px;
+      font-size: 24px;
+      font-family: 'Monserrat Regular', sans-serif;
     }
 }
 &__arrow-back {
