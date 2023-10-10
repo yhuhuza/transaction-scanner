@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+import NetworkChanger from '../NetworkChanger/NetworkChanger.vue';
+</script>
+
 <template>
     <header class="flex flex-row justify-between items-center box-border justify-around">
       <div>
@@ -9,7 +13,3 @@
       </router-link>
     </header>
 </template>
-  
-<script lang="ts" setup>
-import NetworkChanger from '../NetworkChanger/NetworkChanger.vue';
-</script>
