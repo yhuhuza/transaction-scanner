@@ -6,7 +6,14 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      content: {
+        'arrowList': 'url("/assets/logo/arrow-list.svg")',
+      },
+      colors: {
+        marine: '#03B7E2',
+      }
+    },
   },
   plugins: [],
 }
