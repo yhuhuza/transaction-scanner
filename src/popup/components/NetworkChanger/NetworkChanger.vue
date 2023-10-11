@@ -1,20 +1,31 @@
 <script lang="ts" setup>
 import { useToggle} from '@vueuse/core';
+import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
+
+import { useNetworkStore } from '../../stores/useNetworkStore';
 
 import NetworkList from './NetworkList.vue';
 
+const networkStore = useNetworkStore();
+const { network } = storeToRefs(networkStore);
+
 const listOpened = ref(false);
 const openListOfNetworks = useToggle(listOpened);
+
+// const defineNetwork = computed(() => {
+//   return !network ? 'Choose your token' : network;
+// });
 </script>
 
 
 <template>
     <div 
-      class="border w-48 h-10 flex rounded-md bg-marine items-center justify-between px-1.5 py-2 cursor-pointer"
+      class="border w-48 h-10 flex rounded-md bg-marine items-center justify-between px-1.5 cursor-pointer relative box-border"
       @click="openListOfNetworks()"
     >
-      <network-list v-if="listOpened"></network-list>
+      <span class="heading1">{{ network }}</span>
+      <network-list v-if="listOpened" class=""></network-list>
       <div>
         <img src="../../../assets/logo/arrow-list.svg" alt="arrow"/>
       </div>

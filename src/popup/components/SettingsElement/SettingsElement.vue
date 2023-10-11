@@ -6,6 +6,7 @@
       </router-link>
       <h2 class="settings-element__header_text">Settings</h2>
     </div>
+
     <div class="settings-element__background-color">
       <div class="settings-element__logo">
         <img src="../../../assets/logo/light-theme.svg" alt="moon" />
@@ -20,6 +21,7 @@
         <img src="../../../assets/logo/dark-theme.svg" alt="moon" />
       </div>
     </div>
+
     <settings-menu></settings-menu>
   </section>
 </template>
@@ -48,6 +50,7 @@ const changeColorScheme = useToggle(isDark);
     align-items: center;
     margin-bottom: 30px;
     &_text {
+      font-family: Monserrat Regular, sans-serif;
       font-size: 24px;
     }
   }
