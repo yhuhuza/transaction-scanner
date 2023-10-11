@@ -55,7 +55,6 @@ const mainPage = computed(() => {
   transform: translateX(0);
 }
 
-
 .hide-leave-from {
   transform: translateX(0);
 }
