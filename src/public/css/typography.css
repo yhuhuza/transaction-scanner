@@ -5,3 +5,19 @@
     font-style: normal;
     font-weight: 600;
 }
+
+.text {
+    color: #000;
+    font-family: Monserrat Regular, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.white-text {
+    color: #FFF;
+    font-family: Monserrat Regular, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+}

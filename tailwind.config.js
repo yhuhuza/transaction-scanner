@@ -12,7 +12,12 @@ module.exports = {
       },
       colors: {
         marine: '#03B7E2',
-      }
+      },
+      spacing: {
+        'oof': '105%',
+        'sev': '7px',
+        'fth': '15px',
+      },
     },
   },
   plugins: [],
