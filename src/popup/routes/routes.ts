@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+import App from '../App.vue';
 import SettingsElement from '../components/SettingsElement/SettingsElement.vue';
 
 export default createRouter({
@@ -7,8 +8,14 @@ export default createRouter({
   linkActiveClass: 'open active',
   routes: [
     {
+      path: '/index.html',
+      component: App,
+      meta: { transition: 'fade' },
+    },
+    {
       path: '/settings',
       component: SettingsElement,
+      meta: { transition: 'hide' },
     },
   ],
 });

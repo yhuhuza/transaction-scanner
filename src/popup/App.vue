@@ -1,6 +1,6 @@
 <template>
   <div class="transaction-scanner">
-    <Transition name="fade" mode="out-in">
+    <Transition :name="router.meta.transition" mode="out-in">
       <section v-if="mainPage">
         <HeaderElement ></HeaderElement>
         <MainPage></MainPage>
@@ -17,9 +17,10 @@ import { useRoute } from 'vue-router';
 import HeaderElement from './components/HeaderElement/HeaderElement.vue';
 import MainPage from './components/MainPage/MainPage.vue';
 
+const router = useRoute();
+
 const mainPage = computed(() => {
-  const { path } = useRoute();
-  return path === '/' || path === '/index.html';
+  return router.path === '/' || router.path === '/index.html';
 });
 
 </script>
@@ -34,7 +35,9 @@ const mainPage = computed(() => {
 }
 
 .fade-enter-active,
-.fade-leave-active {
+.fade-leave-active,
+.hide-enter-active,
+.hide-leave-active {
   transition: all 0.3s ease;
 }
 
@@ -42,13 +45,28 @@ const mainPage = computed(() => {
   transform: translateX(0);
 }
 .fade-leave-to {
-  transform: translateX(-100%);
+  transform: translateX(100%);
 }
 
 .fade-enter-from {
-  transform: translateX(100%);
+  transform: translateX(-100%);
 }
 .fade-enter-to {
+  transform: translateX(0);
+}
+
+
+.hide-leave-from {
+  transform: translateX(0);
+}
+.hide-leave-to {
+  transform: translateX(-100%);
+}
+
+.hide-enter-from {
+  transform: translateX(100%);
+}
+.hide-enter-to {
   transform: translateX(0);
 }
 
