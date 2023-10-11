@@ -12,10 +12,6 @@ const { network } = storeToRefs(networkStore);
 
 const listOpened = ref(false);
 const openListOfNetworks = useToggle(listOpened);
-
-// const defineNetwork = computed(() => {
-//   return !network ? 'Choose your token' : network;
-// });
 </script>
 
 

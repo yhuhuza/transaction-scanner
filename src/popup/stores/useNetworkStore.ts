@@ -7,6 +7,7 @@ export const useNetworkStore = defineStore<
   },
   Record<never, never>,
   {
+    init(): Promise<void>;
     setNetwork(network: string): void;
   }
 >('network', {
@@ -14,8 +15,12 @@ export const useNetworkStore = defineStore<
     network: 'Choose your token',
   }),
   actions: {
+    async init() {
+      this.network = localStorage.getItem("network");
+    },
     setNetwork(network) {
       this.network = network;
+      localStorage.setItem("network", network);
     },
   },
 });
