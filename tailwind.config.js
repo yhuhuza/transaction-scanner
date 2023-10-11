@@ -11,7 +11,9 @@ module.exports = {
         'arrowList': 'url("/assets/logo/arrow-list.svg")',
       },
       colors: {
-        marine: '#03B7E2',
+        'marine': '#03B7E2',
+        'dark-coal': '#0D0D0D',
+        'gray': '#333333',
       },
       spacing: {
         'oof': '105%',

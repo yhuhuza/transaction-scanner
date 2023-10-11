@@ -17,9 +17,9 @@ const obje = [
 </script>
 
 <template>
-    <div class="flex flex-col border bg-white rounded-md absolute top-oof w-48 left-0 box-border overflow-hidden">
+    <div class="dark:bg-dark-coal flex flex-col border border-slate-400 bg-white rounded-md absolute top-oof w-48 left-0 box-border overflow-hidden">
         <ul>
-            <li v-for="item in  obje" :key="item.id" class="text py-sev pl-fth hover:bg-marine" @click="setNetwork(item.title)">{{ item.title }}</li>
+            <li v-for="item in  obje" :key="item.id" class="dark:text-white text py-sev pl-fth hover:bg-marine" @click="setNetwork(item.title)">{{ item.title }}</li>
         </ul>
     </div>
 </template>

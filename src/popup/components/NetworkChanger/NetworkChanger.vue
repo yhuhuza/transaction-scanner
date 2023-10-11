@@ -17,7 +17,7 @@ const openListOfNetworks = useToggle(listOpened);
 
 <template>
     <div 
-      class="border w-48 h-10 flex rounded-md bg-marine items-center justify-between px-1.5 cursor-pointer relative box-border"
+      class="w-48 h-10 flex rounded-md bg-marine items-center justify-between px-1.5 cursor-pointer relative box-border"
       @click="openListOfNetworks()"
     >
       <span class="heading1">{{ network }}</span>
