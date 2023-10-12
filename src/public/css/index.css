@@ -11,3 +11,7 @@ body {
     box-sizing: border-box;
     overflow: hidden;
 }
+
+.button-history {
+    background: linear-gradient(271deg, #4075E9 0%, #E203B7 99.85%);
+}
