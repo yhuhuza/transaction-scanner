@@ -19,6 +19,7 @@ module.exports = {
         'oof': '105%',
         'sev': '7px',
         'fth': '15px',
+        'ef': '85px',
       },
     },
   },

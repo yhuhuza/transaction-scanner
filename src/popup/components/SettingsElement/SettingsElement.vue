@@ -1,10 +1,39 @@
+<script lang="ts" setup>
+import { useDark } from '@vueuse/core';
+import { computed } from 'vue';
+
+import LightArrowBack from '../../../assets/logo/arrow-back-light.svg';
+import DarkArrowBack from '../../../assets/logo/arrow-back.svg';
+
+import SettingsMenu from './SettingsMenu.vue';
+
+const isDark = useDark({
+  selector: "body",
+  attribute: "class",
+  valueDark: "dark",
+  valueLight: "light",
+});
+
+const changeColorScheme = () => {
+  const isDarkTheme = !isDark.value;
+  localStorage.setItem('isDark', JSON.stringify(isDarkTheme));
+  isDark.value = isDarkTheme;
+};
+
+const definedArrow = computed(() => {
+  return isDark.value ? LightArrowBack : DarkArrowBack;
+});
+
+</script>
+
 <template>
-  <section class="dark:bg-dark-coal settings-element">
-    <div class="settings-element__header">
-      <router-link to="/index.html" class="settings-element__arrow-back">
-        <img src="../../../assets/logo/arrow-back.svg" alt="arrow"/>
+  <section class="dark:bg-dark-coal border-box">
+
+    <div class="flex items-center mb-7">
+      <router-link to="/index.html" class="w-10 h-10">
+        <img class="h-full" :src="definedArrow" alt="arrow"/>
       </router-link>
-      <h2 class="dark:text-white settings-element__header_text">Settings</h2>
+      <h2 class="dark:text-white w-full pl-ef heading1 text-black text-xl uppercase">Settings</h2>
     </div>
 
     <div class="settings-element__background-color">
@@ -25,25 +54,6 @@
     <settings-menu></settings-menu>
   </section>
 </template>
-  
-<script lang="ts" setup>
-import { useDark } from '@vueuse/core';
-
-import SettingsMenu from './SettingsMenu.vue';
-
-const isDark = useDark({
-  selector: "body",
-  attribute: "class",
-  valueDark: "dark",
-  valueLight: "light",
-});
-
-const changeColorScheme = () => {
-  const isDarkTheme = !isDark.value;
-  localStorage.setItem('isDark', JSON.stringify(isDarkTheme));
-  isDark.value = isDarkTheme;
-};
-</script>
   
 <style lang="scss" scoped>
 .settings-element {
