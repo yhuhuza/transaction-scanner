@@ -1,10 +1,10 @@
 <template>
-  <section class="settings-element">
+  <section class="dark:bg-dark-coal settings-element">
     <div class="settings-element__header">
       <router-link to="/index.html" class="settings-element__arrow-back">
         <img src="../../../assets/logo/arrow-back.svg" alt="arrow"/>
       </router-link>
-      <h2 class="settings-element__header_text">Settings</h2>
+      <h2 class="dark:text-white settings-element__header_text">Settings</h2>
     </div>
 
     <div class="settings-element__background-color">
@@ -27,7 +27,7 @@
 </template>
   
 <script lang="ts" setup>
-import { useDark, useToggle} from '@vueuse/core';
+import { useDark } from '@vueuse/core';
 
 import SettingsMenu from './SettingsMenu.vue';
 
@@ -38,7 +38,11 @@ const isDark = useDark({
   valueLight: "light",
 });
 
-const changeColorScheme = useToggle(isDark);
+const changeColorScheme = () => {
+  const isDarkTheme = !isDark.value;
+  localStorage.setItem('isDark', JSON.stringify(isDarkTheme));
+  isDark.value = isDarkTheme;
+};
 </script>
   
 <style lang="scss" scoped>
