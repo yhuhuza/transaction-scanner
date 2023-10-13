@@ -7,6 +7,7 @@ interface SettingsMenuElements {
   title: string;
   image: string,
   alt: string,  
+  path: string,
 };
 
 interface NetworkElements {
@@ -20,21 +21,25 @@ const SETTINGS_MENU: SettingsMenuElements[] = [
     title: 'Choose your language',
     image: GlobeImage,
     alt: 'globe',
+    path: 'language',
   },
   {
     title: 'Delete saved transactions',
     image: RubbishImage,
     alt: 'rubbish',
+    path: 'delete',
   },
   {
     title: 'Choose your currency for comparison',
     image: BitcoinImage,
     alt: 'bitcoin',
+    path: 'currency',
   },
   {
     title: 'Help & Support',
     image: HelpImage,
     alt: 'help',
+    path: 'help',
   }
 ];
 
