@@ -9,6 +9,12 @@ interface SettingsMenuElements {
   alt: string,  
 };
 
+interface NetworkElements {
+  id: number;
+  title: string;
+  net: string;
+}
+
 const SETTINGS_MENU: SettingsMenuElements[] = [
   {
     title: 'Choose your language',
@@ -32,6 +38,15 @@ const SETTINGS_MENU: SettingsMenuElements[] = [
   }
 ];
 
+const NETWORK_ELEMENTS: NetworkElements[]  = [
+  { id: 1, title: 'Bitcoin', net: 'bit' },
+  { id: 2, title: 'Thether TRC20', net: 'the' },
+  { id: 3, title: 'Ethereum', net: 'eth' },
+  { id: 4, title: 'Tether ERC20', net: 'erc' },
+  { id: 5, title: 'Tether BEP2', net: 'bep' },
+];
+
 export {
   SETTINGS_MENU,
+  NETWORK_ELEMENTS,
 };
