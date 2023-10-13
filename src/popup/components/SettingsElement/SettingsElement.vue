@@ -4,6 +4,10 @@ import { computed } from 'vue';
 
 import LightArrowBack from '../../../assets/logo/arrow-back-light.svg';
 import DarkArrowBack from '../../../assets/logo/arrow-back.svg';
+import DarkThemeMoon from '../../../assets/logo/dark-theme-moon.svg';
+import DarkThemeSun from '../../../assets/logo/dark-theme-sun.svg';
+import LightThemeMoon from '../../../assets/logo/light-theme-moon.svg';
+import LightThemeSun from '../../../assets/logo/light-theme-sun.svg';
 
 import SettingsMenu from './SettingsMenu.vue';
 
@@ -24,6 +28,13 @@ const definedArrow = computed(() => {
   return isDark.value ? LightArrowBack : DarkArrowBack;
 });
 
+const definedThemeSign = computed(() => {
+  return isDark.value ? DarkThemeSun : LightThemeSun;
+});
+
+const definedThemeMoon = computed(() => {
+  return isDark.value ? DarkThemeMoon : LightThemeMoon;
+});
 </script>
 
 <template>
@@ -38,7 +49,7 @@ const definedArrow = computed(() => {
 
     <div class="settings-element__background-color">
       <div class="settings-element__logo">
-        <img src="../../../assets/logo/light-theme.svg" alt="moon" />
+        <img :src="definedThemeSign" alt="moon" />
       </div>
 
       <label class="switch">
@@ -47,7 +58,7 @@ const definedArrow = computed(() => {
       </label> 
 
       <div class="settings-element__logo">
-        <img src="../../../assets/logo/dark-theme.svg" alt="moon" />
+        <img :src=" definedThemeMoon" alt="moon" />
       </div>
     </div>
 
