@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { useDark } from '@vueuse/core';
 
+import sendContentMessage from '../../../utils/tools/sendContentMessage';
+
 const isDark = useDark({
   selector: "body",
   attribute: "class",
@@ -12,6 +14,7 @@ const changeColorScheme = () => {
   const isDarkTheme = !isDark.value;
   localStorage.setItem('isDark', JSON.stringify(isDarkTheme));
   isDark.value = isDarkTheme;
+  sendContentMessage({action: 'showInstallation'});
 };
 </script>
 
