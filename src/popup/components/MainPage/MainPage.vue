@@ -1,11 +1,14 @@
 <script lang="ts" setup>
 import { useDark } from '@vueuse/core';
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
+
 
 import DarkPlaceholder from '../../../assets/logo/placeholder-dark.png';
 import LightPlaceholder from '../../../assets/logo/placeholder-light.png';
+import sendContentMessage from '../../../utils/tools/sendContentMessage';
 
-
+let timerId: any = 0;
+const searchQuery = ref('');
 const isDark = useDark({
   selector: "body",
   attribute: "class",
@@ -16,13 +19,33 @@ const isDark = useDark({
 const definedPlaceholderImage = computed(() => {
   return isDark.value ? DarkPlaceholder : LightPlaceholder;
 });
+
+const handleInput = () => {
+  if (timerId) {
+    clearTimeout(timerId);
+  }
+
+  timerId = setTimeout(() => {
+    sendRequestToServer();
+  }, 1000);
+};
+
+const sendRequestToServer = () => {
+  sendContentMessage({ action: 'getInformationAboutTransaction', data: { hash: searchQuery.value } });
+};
 </script>
 
 <template>
   <div class="mt-8">
 
     <div class="border dark:border-white border-black rounded-lg w-full flex flex-row py-2.5 px-3.5 h-11 align-center justify-between items-center">
-      <input class="dark:bg-black dark:text-white outline-none input-text h-8 w-full" type="text" placeholder="Input your txn hash">
+      <input 
+        v-model="searchQuery" 
+        class="dark:bg-black dark:text-white outline-none input-text h-8 w-full" 
+        type="text"
+        placeholder="Input your txn hash" 
+        @input="handleInput" 
+      >
       <div class="ml-2">
         <img class="cursor-pointer dark:invert" src="../../../assets/logo/search-sign.svg" alr="search" />
       </div>
