@@ -16,3 +16,9 @@ type PossibleMessages = {
 };
 
 export type AllowedType = PossibleMessages[keyof PossibleMessages];
+
+export interface SenderInformation {
+  id: string;
+  origin: string;
+  url: string;
+}
