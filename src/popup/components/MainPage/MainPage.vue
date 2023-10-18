@@ -31,7 +31,7 @@ const handleInput = () => {
 };
 
 const sendRequestToServer = () => {
-  sendContentMessage({ action: 'getInformationAboutTransaction', data: { hash: searchQuery.value } });
+  sendContentMessage({ action: 'fetchTransactionData', data: { hash: searchQuery.value } });
 };
 </script>
 
