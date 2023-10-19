@@ -14,6 +14,12 @@ export default class Scanner {
     this.transactions = [];
   }
 
+  async getSavedTransactions(): Promise<void> {
+    const dataCashed: string | undefined = await getStorageData(this.name);
+    if (!dataCashed) return;
+    this.transactions = JSON.parse(dataCashed);
+  }
+
   checkIfTransactionAlreadyExist(hashValue: string): boolean {
     return !!this.transactions.find((item) => item.hashValue === hashValue);
   }
