@@ -1,13 +1,17 @@
 <script lang="ts" setup>
 import { useDark } from '@vueuse/core';
+import { storeToRefs } from 'pinia';
 import { ref, computed } from 'vue';
 
 
 import DarkPlaceholder from '../../../assets/logo/placeholder-dark.png';
 import LightPlaceholder from '../../../assets/logo/placeholder-light.png';
 import sendContentMessage from '../../../utils/tools/sendContentMessage';
+import { useTransactionsStore } from '../../stores/useTransactionsStore';
 
 let timerId: any = 0;
+const transactionStore = useTransactionsStore();
+const { lastTransaction } = storeToRefs(transactionStore);
 const searchQuery = ref('');
 const isDark = useDark({
   selector: "body",
@@ -46,7 +50,7 @@ const sendRequestToServer = () => {
         placeholder="Input your txn hash" 
         @input="handleInput" 
       >
-      <div class="ml-2">
+      <div v-if="!lastTransaction?.hashValue" class="ml-2">
         <img class="cursor-pointer dark:invert" src="../../../assets/logo/search-sign.svg" alr="search" />
       </div>
     </div>
