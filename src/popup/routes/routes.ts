@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import App from '../App.vue';
-import HistoryElement from '../components/HistoryElement/HistoryElement.vue';
+import LanguageChanger from '../components/LanguageChanger/LanguageChanger.vue';
 import SettingsElement from '../components/SettingsElement/SettingsElement.vue';
 
 export default createRouter({
@@ -20,7 +20,7 @@ export default createRouter({
     },
     {
       path: '/language',
-      component: HistoryElement
+      component: LanguageChanger
     },
   ],
 });
