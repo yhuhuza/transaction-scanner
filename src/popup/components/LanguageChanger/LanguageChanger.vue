@@ -9,8 +9,12 @@ const definedBorderColor = (langSymbol) => {
   return locale.value === langSymbol ? 'border-color: #03B7E2' : '';
 };
 
+const localeFromStorage = localStorage?.getItem("locale");
+locale.value = !localeFromStorage ? 'en' : localeFromStorage;
+
 const changeLocale = (language) => {
   locale.value = language;
+  localStorage.setItem("locale", language);
 };
 </script>
 
