@@ -2,7 +2,9 @@ import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 import { createI18n } from 'vue-i18n';
 
-import messages from '../utils/locales/locales';
+import ch from '../utils/locales/ch.json';
+import en from '../utils/locales/en.json';
+import ru from '../utils/locales/ru.json';
 
 import App from './App.vue';
 import router from './routes/routes';
@@ -16,7 +18,9 @@ const i18n = createI18n({
 	legacy: false,
 	locale: 'en',
 	messages: {
-		messages,
+		en,
+		ru,
+		ch,
 	},
 });
 
