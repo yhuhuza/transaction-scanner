@@ -16,6 +16,8 @@ export const useNetworkStore = defineStore<
   }),
   actions: {
     async init() {
+      const networkName = localStorage.getItem("network");
+      if (!networkName) return;
       this.network = localStorage.getItem("network");
     },
     setNetwork(network) {
