@@ -1,21 +1,17 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
 
-import ChinaLanguage from '../../../assets/logo/china-language.svg';
-import EnglishLanguage from '../../../assets/logo/english-language.svg';
-import RussianLanguage from '../../../assets/logo/russian-language.svg';
+import { LANGUAGES_ARRAY } from '../../../utils/constants.ts';
 
 const { t, locale } = useI18n({ useScope: 'global' });
+
+const definedBorderColor = (langSymbol) => {
+  return locale.value === langSymbol ? 'border-color: #03B7E2' : '';
+};
 
 const changeLocale = (language) => {
   locale.value = language;
 };
-
-const LANGUAGES_ARRAY = [
-  {img: EnglishLanguage, title: 'English', id: 'en'},
-  {img: RussianLanguage, title: 'Русский', id: 'ru'},
-  {img: ChinaLanguage, title: '中国人', id: 'ch'},
-];
 </script>
 
 <template>
@@ -30,9 +26,10 @@ const LANGUAGES_ARRAY = [
         <h4 class="dark:text-white settings-text mt-11">{{ t('settings.language.chooseLanguage') }}</h4>
         <div class="mt-11">
             <div 
-              v-for="item in LANGUAGES_ARRAY" 
-              :key="item.title" 
+              v-for="item in LANGUAGES_ARRAY"
+              :key="item.title"
               class="mb-6 pl-6 py-4 border dark:border-white rounded-2xl flex items-center align-center justify-start"
+              :style="definedBorderColor(item.id)"
               @click="changeLocale(item.id)"
             >
                 <img class="mr-4" :src="item.img" :alt="item.title">
