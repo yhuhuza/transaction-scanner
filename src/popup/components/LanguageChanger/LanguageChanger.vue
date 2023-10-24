@@ -1,6 +1,17 @@
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n';
+
 import EnglishLanguage from '../../../assets/logo/english-language.svg';
 import RussianLanguage from '../../../assets/logo/russian-language.svg';
+
+function trans(labelToTranslate) {
+  const { messages, locale } = useI18n();
+  const localeMessages = messages.value?.messages?.[locale.value];
+  const keys = (labelToTranslate || '').split('.');
+  const translatedLabel = keys.reduce((ac, key) => ac?.[key], localeMessages);
+
+  return translatedLabel !== undefined ? translatedLabel : labelToTranslate;
+}
 
 const LANGUAGES_ARRAY = [
   {img: EnglishLanguage, title: 'English'},
@@ -17,7 +28,7 @@ const LANGUAGES_ARRAY = [
       <h2 class="dark:text-white w-full pl-ef heading1 text-black text-xl uppercase">Language</h2>
     </div>
     <div>
-        <h4 class="dark:text-white settings-text mt-11">Choose your language, please:</h4>
+        <h4 class="dark:text-white settings-text mt-11">{{ trans('settings.chooseLanguage') }}</h4>
         <div class="mt-11">
             <div 
               v-for="item in LANGUAGES_ARRAY" 
