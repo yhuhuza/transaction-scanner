@@ -1,18 +1,18 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
 
-import { LANGUAGES_ARRAY } from '../../../utils/constants.ts';
+import { LANGUAGES_ARRAY } from '../../../utils/constants';
 
 const { t, locale } = useI18n({ useScope: 'global' });
 
-const definedBorderColor = (langSymbol) => {
+const definedBorderColor = (langSymbol: string) => {
   return locale.value === langSymbol ? 'border-color: #03B7E2' : '';
 };
 
 const localeFromStorage = localStorage?.getItem("locale");
 locale.value = !localeFromStorage ? 'en' : localeFromStorage;
 
-const changeLocale = (language) => {
+const changeLocale = (language: string) => {
   locale.value = language;
   localStorage.setItem("locale", language);
 };

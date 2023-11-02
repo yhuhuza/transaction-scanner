@@ -9,10 +9,13 @@ import ru from '../utils/locales/ru.json';
 import App from './App.vue';
 import router from './routes/routes';
 import { useNetworkStore } from './stores/useNetworkStore';
+import { useTransactionsStore } from './stores/useTransactionsStore';
 
 const pinia = createPinia();
 const networkStore = useNetworkStore(pinia);
-networkStore.init();
+const transactionsStore = useTransactionsStore(pinia);
+
+Promise.all([networkStore.init(), transactionsStore.getSavedTransactions()]);
 
 const i18n = createI18n({
 	legacy: false,

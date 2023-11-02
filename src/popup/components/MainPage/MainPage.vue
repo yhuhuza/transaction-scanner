@@ -3,7 +3,6 @@ import { useDark } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 import { ref, computed } from 'vue';
 
-
 import DarkPlaceholder from '../../../assets/logo/placeholder-dark.png';
 import LightPlaceholder from '../../../assets/logo/placeholder-light.png';
 import sendContentMessage from '../../../utils/tools/sendContentMessage';
@@ -59,6 +58,8 @@ const sendRequestToServer = () => {
       <img class="w-full h-56" :src="definedPlaceholderImage" alt="placeholder" />
     </div>
 
-    <button class="uppercase button-history mt-4 rounded-lg border-black heading2 w-full h-12 py-2">Transaction history</button>
+    <router-link to="/history">
+      <button class="uppercase button-history mt-4 rounded-lg border-black heading2 w-full h-12 py-2">Transaction history</button>
+    </router-link>
   </div>
 </template>

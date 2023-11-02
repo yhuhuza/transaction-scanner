@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from '../App.vue';
 import LanguageChanger from '../components/LanguageChanger/LanguageChanger.vue';
 import SettingsElement from '../components/SettingsElement/SettingsElement.vue';
+import TransactionHistory from '../components/TransactionHistory/TransactionHistory.vue';
 
 export default createRouter({
   history: createWebHistory(),
@@ -21,6 +22,11 @@ export default createRouter({
     {
       path: '/language',
       component: LanguageChanger
+    },
+    {
+      path: '/history',
+      component: TransactionHistory,
+      meta: { transition: 'hide' },
     },
   ],
 });
