@@ -4,5 +4,8 @@
       "titleLanguage": "Язык",
       "chooseLanguage": "Пожалуйста, выберите язык"
     }
+  },
+  "history": {
+    "title": "История транзакций"
   }
 }

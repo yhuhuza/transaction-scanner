@@ -4,5 +4,8 @@
       "titleLanguage": "Language",
       "chooseLanguage": "Choose your language, please:"
     }
+  },
+  "history": {
+    "title": "transaction history"
   }
 }
