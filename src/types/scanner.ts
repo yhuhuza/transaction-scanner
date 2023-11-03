@@ -3,6 +3,7 @@ import { AllowedType, SenderInformation } from './methodsKeys';
 export type Fetch_Data = {
     request: AllowedType,
     sender: SenderInformation;
+    sendResponse: any;
 }
 
 export interface ParsedTransaction {
@@ -20,4 +21,6 @@ export interface ParsedTransaction {
       energyTotal: number,
     },
     transactionSymbol: string,
+    transferredStatus: string,
+    confirmedStatus: string,
 }

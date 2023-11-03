@@ -6,6 +6,7 @@
     }
   },
   "history": {
-    "title": "transaction history"
+    "title": "transaction history",
+    "details": "Show more details"
   }
 }

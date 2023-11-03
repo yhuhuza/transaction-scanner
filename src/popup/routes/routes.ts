@@ -13,6 +13,13 @@ export default createRouter({
       path: '/index.html',
       component: App,
       meta: { transition: 'fade' },
+      children: [
+        {
+          path: '/history',
+          component: TransactionHistory,
+          meta: { transition: 'hide' },
+        },
+      ]
     },
     {
       path: '/settings',
@@ -22,11 +29,6 @@ export default createRouter({
     {
       path: '/language',
       component: LanguageChanger
-    },
-    {
-      path: '/history',
-      component: TransactionHistory,
-      meta: { transition: 'hide' },
     },
   ],
 });

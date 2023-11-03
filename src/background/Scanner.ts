@@ -31,6 +31,9 @@ export default class Scanner {
   }
 
   parseTransaction(transaction) {
+    const rawDate = new Date(transaction.timestamp);
+    const formattedDate = `${rawDate.getFullYear()}-${rawDate.getMonth()}-${rawDate.getDate()}`;
+
     return {
       accountFrom: transaction.ownerAddress,
       accountTo: transaction.toAddress,
@@ -38,7 +41,7 @@ export default class Scanner {
       hashValue: transaction.hash,
       resultValue: transaction.contractRet,
       confirmedValue: transaction.confirmed,
-      timeRange: new Date(transaction.timestamp),
+      timeRange: formattedDate,
       blockValue: transaction.block,
       feeLimit: transaction.fee_limit,
       costValues: {
@@ -46,6 +49,8 @@ export default class Scanner {
         energyTotal: transaction.cost.energy_usage_total,
       },
       transactionSymbol: transaction.transfersAllList[0].symbol,
+      transferredStatus: transaction.confirmed ? 'transferred' : 'not transferred',
+      confirmedStatus: transaction.confirmed ? 'confirmed' : 'not confirmed',
     };
   }
 

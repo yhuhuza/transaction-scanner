@@ -6,6 +6,7 @@
     }
   },
   "history": {
-    "title": "交易记录"
+    "title": "交易记录",
+    "details": "显示更多详情"
   }
 }

@@ -1,6 +1,6 @@
 body {
     width: 400px;
-    height: 600px;
+    min-height: 600px;
     margin: 0;
     box-sizing: border-box;
 }
@@ -9,7 +9,8 @@ body {
     padding: 24px;
     height: inherit;
     box-sizing: border-box;
-    overflow: hidden;
+    width: inherit;
+    min-height: inherit;
 }
 
 .button-history {
@@ -73,4 +74,14 @@ input:checked + .slider:before {
   
 .slider.round:before {
     border-radius: 50%;
+}
+
+.download-pdf::before {
+    content: "";
+    display: block;
+    width: 24px;
+    margin-right: 4px;
+    height: 24px;
+    background: url("../../assets/logo/download-sign.svg") no-repeat center;
+    background-size: contain;
 }

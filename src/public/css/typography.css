@@ -45,3 +45,26 @@
     font-style: normal;
     font-weight: 500;
 }
+
+.small-bold-text {
+    color: #000;
+    font-family: Monserrat Bold;
+    font-size: 14px;
+    font-style: bold;
+    font-weight: 700;
+}
+
+.white-bold-text {
+    color: #FFF;
+    font-family: Monserrat Bold, sans-serif;
+    font-size: 14px;
+    font-style: bold;
+    font-weight: 700;
+}
+
+.dark-semibold-text {
+    color: #000;
+    font-family: Monserrat Semibold, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
