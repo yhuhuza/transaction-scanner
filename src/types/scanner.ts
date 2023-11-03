@@ -24,3 +24,10 @@ export interface ParsedTransaction {
     transferredStatus: string,
     confirmedStatus: string,
 }
+
+export interface TransactionHash {
+  action: string;
+  data: {
+    hash: string;
+  }
+}

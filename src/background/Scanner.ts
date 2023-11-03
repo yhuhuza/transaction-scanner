@@ -55,7 +55,7 @@ export default class Scanner {
   }
 
   async fetchTransactionData(data: Fetch_Data): Promise<void> {
-    const { request } = data;
+    const { request, sender } = data;
     const url: string = `https://apilist.tronscanapi.com/api/transaction-info?hash=${request.data.hash}`;
     fetch(url, { headers: { 'TRON-PRO-API-KEY': API_KEY }})
       .then(response => response.json())
@@ -64,6 +64,10 @@ export default class Scanner {
         const transactionExist = this.checkIfTransactionAlreadyExist(parsedTransaction.hashValue);
         if (transactionExist) return;
         await this.saveTransaction(parsedTransaction);
+        await chrome.runtime.sendMessage(sender.id, {
+          action: 'saveData',
+          data: parsedTransaction,
+        });
       })
       .catch(error => console.error(error));
   }

@@ -1,34 +1,33 @@
 import { defineStore } from 'pinia';
 
-import { ParsedTransaction } from '../../types/scanner';
+import { ParsedTransaction, TransactionHash } from '../../types/scanner';
 import getStorageData from '../../utils/tools/getStorageData';
+import sendContentMessage from '../../utils/tools/sendContentMessage';
 
 export const useTransactionsStore = defineStore<
   'transactions',
   {
-    savedTransactions: ParsedTransaction[] | null;
+    savedTransactions: ParsedTransaction[] | [];
     lastTransaction: ParsedTransaction | null;
     madeQuery: boolean;
   },
   Record<never, never>,
   {
-    setLastTransaction(lastTransaction: ParsedTransaction): Promise<void>
-    setSavedTransaction(savedTransactions: ParsedTransaction[]): Promise<void>
+    setTransaction(lastTransaction: ParsedTransaction): Promise<void>
     setQueryTimeout(): void,
     getSavedTransactions(): Promise<void>,
   }
 >('transactions', {
   state: () => ({
-    savedTransactions: null,
+    savedTransactions: [],
     lastTransaction: null,
     madeQuery: false,
   }),
   actions: {
-    async setLastTransaction(lastTransaction) {
+    async setTransaction(lastTransaction) {
+      if (!lastTransaction?.hashValue) this.setQueryTimeout();
       this.lastTransaction = lastTransaction;
-    },
-    async setSavedTransaction(savedTransactions) {
-        this.savedTransactions = savedTransactions;
+      this.savedTransactions.push(lastTransaction);
     },
     async getSavedTransactions() {
       const chachedTransactions: string | undefined 

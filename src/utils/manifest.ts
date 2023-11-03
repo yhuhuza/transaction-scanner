@@ -1,6 +1,13 @@
 import pkg from '../../package.json';
 
 const sharedManifest: Partial<chrome.runtime.ManifestBase> = {
+  content_scripts: [
+    {
+      js: ['/popup/main.ts'],
+      matches: ['*://*/*'],
+      run_at: 'document_end',
+    },
+  ],
   icons: {
     16: 'logo/logo-icon.png',
     19: 'logo/logo-icon.png',
@@ -14,7 +21,7 @@ const sharedManifest: Partial<chrome.runtime.ManifestBase> = {
     512: 'logo/logo-icon.png',
   },
 
-  permissions: ['alarms', 'storage', 'cookies'],
+  permissions: ['alarms', 'storage', 'cookies', 'tabs'],
 };
 
 const browserAction = {

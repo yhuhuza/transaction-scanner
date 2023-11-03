@@ -1,7 +1,9 @@
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 import { createI18n } from 'vue-i18n';
+import browser from 'webextension-polyfill';
 
+import { AllowedType } from '../types/methodsKeys';
 import ch from '../utils/locales/ch.json';
 import en from '../utils/locales/en.json';
 import ru from '../utils/locales/ru.json';
@@ -14,6 +16,13 @@ import { useTransactionsStore } from './stores/useTransactionsStore';
 const pinia = createPinia();
 const networkStore = useNetworkStore(pinia);
 const transactionsStore = useTransactionsStore(pinia);
+
+browser.runtime.onMessage.addListener(async (request: AllowedType) => {
+	if (request.action === 'saveData') {
+    const { data } = request;
+    transactionsStore.setTransaction(data);
+	}
+});
 
 Promise.all([networkStore.init(), transactionsStore.getSavedTransactions()]);
 
