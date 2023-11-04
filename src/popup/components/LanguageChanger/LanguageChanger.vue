@@ -24,7 +24,7 @@ const changeLocale = (language: string) => {
       <router-link class="w-10 h-10" to="/settings" >
         <img class="h-full dark:invert" src="../../../assets/logo/arrow-back.svg" alt="arrow"/>
       </router-link>
-      <h2 class="dark:text-white w-full pl-ef heading1 text-black text-xl uppercase">{{ t('settings.language.titleLanguage') }}</h2>
+      <h2 class="dark:text-white w-full pl-ef section-header text-black text-xl uppercase">{{ t('settings.language.titleLanguage') }}</h2>
     </div>
     <div>
         <h4 class="dark:text-white settings-text mt-11">{{ t('settings.language.chooseLanguage') }}</h4>

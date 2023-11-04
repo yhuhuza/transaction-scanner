@@ -26,6 +26,10 @@ export const useTransactionsStore = defineStore<
     async setTransaction(lastTransaction) {
       if (!lastTransaction?.hashValue) this.setQueryTimeout();
       this.lastTransaction = lastTransaction;
+      const alreadyInList = !!this.savedTransactions.find((item) => 
+        item.hashValue === lastTransaction.hashValue
+      );
+      if (alreadyInList) return ;
       this.savedTransactions.push(lastTransaction);
     },
     async getSavedTransactions() {

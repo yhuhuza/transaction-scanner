@@ -31,9 +31,6 @@ export default class Scanner {
   }
 
   parseTransaction(transaction) {
-    const rawDate = new Date(transaction.timestamp);
-    const formattedDate = `${rawDate.getFullYear()}-${rawDate.getMonth()}-${rawDate.getDate()}`;
-
     return {
       accountFrom: transaction.ownerAddress,
       accountTo: transaction.toAddress,
@@ -41,7 +38,7 @@ export default class Scanner {
       hashValue: transaction.hash,
       resultValue: transaction.contractRet,
       confirmedValue: transaction.confirmed,
-      timeRange: formattedDate,
+      timeRange: new Date(transaction.timestamp),
       blockValue: transaction.block,
       feeLimit: transaction.fee_limit,
       costValues: {

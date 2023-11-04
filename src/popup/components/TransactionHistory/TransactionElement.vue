@@ -1,18 +1,27 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 
 import { ParsedTransaction } from '../../../types/scanner';
+import { useTransactionsStore } from '../../stores/useTransactionsStore';
 
 const { t } = useI18n();
 const props = defineProps<{ transaction?: ParsedTransaction }>();
+const router = useRouter();
 const transactionDetails = ref(props.transaction);
+const transactionStore = useTransactionsStore();
 
 const formattedDate = computed(() => {
   const rawDate = new Date(transactionDetails.value?.timeRange);
   if (!rawDate) return '';
   return `${rawDate.getFullYear()}-${rawDate.getMonth()}-${rawDate.getDate()}`;
 });
+
+const setLastTransaction = () => {
+  transactionStore.setTransaction(transactionDetails?.value);
+  router.push('/index.html');
+};
 </script>
 
 <template>
@@ -26,7 +35,7 @@ const formattedDate = computed(() => {
       <span class="dark:text-white">{{ transactionDetails?.confirmedStatus }}</span>
     </div>
     <div class="mt-4 flex items-center justify-between input-text">
-      <button class="px-6 py-2 border rounded-lg dark:text-white">{{ t('history.details') }}</button>
+      <button class="px-6 py-2 border rounded-lg dark:text-white" @click="setLastTransaction()">{{ t('history.details') }}</button>
       <div
           class="
           download-pdf px-5 py-2 border rounded-lg border-marine dark:text-white

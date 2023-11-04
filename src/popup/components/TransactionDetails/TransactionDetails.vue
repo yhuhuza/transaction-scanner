@@ -12,35 +12,35 @@ const formattedDate = computed(() => new Date(lastTransaction.value?.timeRange))
 
 <template>
   <div class="mt-8">
-    <h3 class="big-semibold-header flex item-center justify-center mb-4">Transaction Details</h3>
+    <h3 class="big-semibold-header dark:text-white flex item-center justify-center mb-4">Transaction Details</h3>
     <table class="dark-regular-text">
       <tr class="mb-6">
-        <td class="w-teh font-semibold">Account</td>
+        <td class="w-teh font-semibold dark:text-white">Account</td>
         <td class="text-pink">{{ lastTransaction?.accountFrom }}</td>
       </tr>
       <tr class="mb-6">
-        <td class="w-teh font-semibold">Transferred</td>
-        <td class="">{{ lastTransaction?.transferredValue }} {{ lastTransaction?.transactionSymbol }}</td>
+        <td class="w-teh font-semibold dark:text-white">Transferred</td>
+        <td class="dark:text-white">{{ lastTransaction?.transferredValue }} {{ lastTransaction?.transactionSymbol }}</td>
       </tr>
       <tr class="mb-6">
-        <td class="w-teh font-semibold">To</td>
-        <td class="">{{ lastTransaction?.accountTo }}</td>
+        <td class="w-teh font-semibold dark:text-white">To</td>
+        <td class="dark:text-white">{{ lastTransaction?.accountTo }}</td>
       </tr>
       <tr class="mb-6">
-        <td class="w-teh font-semibold">Hash</td>
+        <td class="w-teh font-semibold dark:text-white">Hash</td>
         <td class="text-pink">{{ lastTransaction?.hashValue }}</td>
       </tr>
       <tr class="mb-6">
-        <td class="w-teh font-semibold">Result</td>
-        <td class="">{{ lastTransaction?.resultValue }}</td>
+        <td class="w-teh font-semibold dark:text-white">Result</td>
+        <td class="dark:text-white">{{ lastTransaction?.resultValue }}</td>
       </tr>
       <tr class="mb-6">
-        <td class="w-teh font-semibold">Status</td>
-        <td class="">{{ lastTransaction?.transferredStatus }}</td>
+        <td class="w-teh font-semibold dark:text-white">Status</td>
+        <td class="dark:text-white">{{ lastTransaction?.transferredStatus }}</td>
       </tr>
       <tr class="mb-6">
-        <td class="w-teh font-semibold">Time</td>
-        <td class="">{{ formattedDate }}</td>
+        <td class="w-teh font-semibold dark:text-white">Time</td>
+        <td class="dark:text-white">{{ formattedDate }}</td>
       </tr>
     </table>
   </div>
