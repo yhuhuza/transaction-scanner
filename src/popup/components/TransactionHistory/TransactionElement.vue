@@ -1,18 +1,23 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import { ParsedTransaction } from '../../../types/scanner';
 
-
 const { t } = useI18n();
 const props = defineProps<{ transaction?: ParsedTransaction }>();
 const transactionDetails = ref(props.transaction);
+
+const formattedDate = computed(() => {
+  const rawDate = new Date(transactionDetails.value?.timeRange);
+  if (!rawDate) return '';
+  return `${rawDate.getFullYear()}-${rawDate.getMonth()}-${rawDate.getDate()}`;
+});
 </script>
 
 <template>
   <article class="mb-4 border border-neutral-300 p-3 rounded">
-    <div class="small-bold-text dark:text-white">{{ transactionDetails?.timeRange }}</div>
+    <div class="small-bold-text dark:text-white">{{ formattedDate }}</div>
     <div class="flex items-center justify-between mt-2 dark-semibold-text">
       <span class="dark:text-white">{{ transactionDetails?.transferredStatus }}</span>
       <span class="dark:text-white">{{ transactionDetails?.transferredValue }}</span>

@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia';
 
-import { ParsedTransaction, TransactionHash } from '../../types/scanner';
+import { ParsedTransaction } from '../../types/scanner';
 import getStorageData from '../../utils/tools/getStorageData';
-import sendContentMessage from '../../utils/tools/sendContentMessage';
 
 export const useTransactionsStore = defineStore<
   'transactions',

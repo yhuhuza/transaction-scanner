@@ -85,3 +85,16 @@ input:checked + .slider:before {
     background: url("../../assets/logo/download-sign.svg") no-repeat center;
     background-size: contain;
 }
+
+td, th {
+  text-align: left;
+  padding: 6px;
+  word-wrap:break-word
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}

@@ -7,6 +7,7 @@ import DarkPlaceholder from '../../../assets/logo/placeholder-dark.png';
 import LightPlaceholder from '../../../assets/logo/placeholder-light.png';
 import sendContentMessage from '../../../utils/tools/sendContentMessage';
 import { useTransactionsStore } from '../../stores/useTransactionsStore';
+import TransactionDetails from '../TransactionDetails/TransactionDetails.vue';
 
 let timerId: any = 0;
 const transactionStore = useTransactionsStore();
@@ -39,27 +40,29 @@ const sendRequestToServer = () => {
 </script>
 
 <template>
-  <div class="mt-8">
-
+  <div class="mt-8 relative">
     <div class="border dark:border-white border-black rounded-lg w-full flex flex-row py-2.5 px-3.5 h-11 align-center justify-between items-center">
       <input 
-        v-model="searchQuery" 
-        class="dark:bg-black dark:text-white outline-none input-text h-8 w-full" 
+        v-model="searchQuery"
+        class="dark:bg-black dark:text-white outline-none input-text h-8 w-full"
         type="text"
-        placeholder="Input your txn hash" 
-        @input="handleInput" 
+        placeholder="Input your txn hash"
+        @input="handleInput"
       >
       <div v-if="!lastTransaction?.hashValue" class="ml-2">
         <img class="cursor-pointer dark:invert" src="../../../assets/logo/search-sign.svg" alr="search" />
       </div>
     </div>
-
-    <div class="w-full h-80 mt-9 flex items-center">
-      <img class="w-full h-56" :src="definedPlaceholderImage" alt="placeholder" />
+    <div class="w-full h-80 mt-9">
+      <transaction-details v-if="lastTransaction?.hashValue"></transaction-details>
+      <div v-else class="flex items-center">
+        <img class="h-56 mt-6" :src="definedPlaceholderImage" alt="placeholder" />
+      </div>
     </div>
-
-    <router-link to="/history">
-      <button class="uppercase button-history mt-4 rounded-lg border-black heading2 w-full h-12 py-2">Transaction history</button>
-    </router-link>
+    <div class="relative bottom-mtw">
+      <router-link to="/history">
+        <button class="uppercase button-history mt-4 rounded-lg border-black heading2 w-full h-12 py-2 w-xmax">Transaction history</button>
+     </router-link>
+    </div>
   </div>
 </template>
