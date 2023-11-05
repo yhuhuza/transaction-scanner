@@ -19,8 +19,10 @@ const transactionsStore = useTransactionsStore(pinia);
 
 browser.runtime.onMessage.addListener(async (request: AllowedType) => {
 	if (request.action === 'saveData') {
-    const { data } = request;
-    transactionsStore.setTransaction(data);
+    	const { data } = request;
+    	transactionsStore.setTransaction(data);
+	} else if (request.action === 'displayError') {
+		transactionsStore.setQueryTimeout();
 	}
 });
 

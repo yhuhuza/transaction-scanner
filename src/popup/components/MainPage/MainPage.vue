@@ -7,11 +7,12 @@ import DarkPlaceholder from '../../../assets/logo/placeholder-dark.png';
 import LightPlaceholder from '../../../assets/logo/placeholder-light.png';
 import sendContentMessage from '../../../utils/tools/sendContentMessage';
 import { useTransactionsStore } from '../../stores/useTransactionsStore';
+import MistakePage from '../MistakePage/MistakePage.vue';
 import TransactionDetails from '../TransactionDetails/TransactionDetails.vue';
 
 let timerId: any = 0;
 const transactionStore = useTransactionsStore();
-const { lastTransaction } = storeToRefs(transactionStore);
+const { lastTransaction, madeQuery } = storeToRefs(transactionStore);
 const searchQuery = ref('');
 const isDark = useDark({
   selector: "body",
@@ -35,6 +36,7 @@ const handleInput = () => {
 };
 
 const sendRequestToServer = () => {
+  if (!searchQuery.value) return;
   sendContentMessage({ action: 'fetchTransactionData', data: { hash: searchQuery.value } });
 };
 </script>
@@ -55,6 +57,7 @@ const sendRequestToServer = () => {
     </div>
     <div class="w-full h-80 mt-9">
       <transaction-details v-if="lastTransaction?.hashValue"></transaction-details>
+      <mistake-page v-else-if="madeQuery"></mistake-page>
       <div v-else class="flex items-center">
         <img class="h-56 mt-6" :src="definedPlaceholderImage" alt="placeholder" />
       </div>

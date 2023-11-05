@@ -39,6 +39,7 @@ export const useTransactionsStore = defineStore<
     },
     setQueryTimeout() {
       this.madeQuery = true;
+      this.lastTransaction = null;
       setTimeout(() => {
           this.madeQuery = false;
       }, 3000);

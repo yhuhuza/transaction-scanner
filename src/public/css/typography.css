@@ -98,3 +98,10 @@
     font-size: 22px;
     font-weight: 600;
 }
+
+.mistake-text {
+    color: #E32B16;
+    font-family: Monserrat Medium, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}

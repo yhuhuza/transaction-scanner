@@ -57,6 +57,12 @@ export default class Scanner {
     fetch(url, { headers: { 'TRON-PRO-API-KEY': API_KEY }})
       .then(response => response.json())
       .then(async transaction => {
+        if (!transaction.contractRet) {
+          await chrome.runtime.sendMessage(sender.id, {
+            action: 'displayError',
+          });
+          return ;
+        }
         const parsedTransaction = this.parseTransaction(transaction);
         const transactionExist = this.checkIfTransactionAlreadyExist(parsedTransaction.hashValue);
         if (transactionExist) return;
