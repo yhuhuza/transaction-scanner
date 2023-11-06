@@ -32,6 +32,9 @@ const cancelDeletion = () => {
 };
 
 const deleteTransactions = async () => {
+  if (choosenOptions.value === 'all') {
+    await transactionStore.clearAllTransactions();
+  }
   await transactionStore.deleteTransactions(transactionList.value);
   cancelDeletion();
 };

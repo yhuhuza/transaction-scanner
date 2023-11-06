@@ -20,6 +20,10 @@ export default class Scanner {
     this.transactions = JSON.parse(dataCashed);
   }
 
+  async clearAllTransactions(): Promise<void> {
+    await browser.storage.local.clear();
+  }
+
   checkIfTransactionAlreadyExist(hashValue: string): boolean {
     return !!this.transactions.find((item) => item.hashValue === hashValue);
   }
@@ -28,6 +32,13 @@ export default class Scanner {
     this.transactions.push(parsedData);
     await browser.storage.local.remove(this.name);
     await setStorageData(this.name, JSON.stringify(this.transactions));
+  }
+
+  async deleteTransactions({ request }): Promise<void> {
+    await this.clearAllTransactions();
+    const { savedTransactions } = request.data;
+    this.transactions = savedTransactions;
+    await this.saveTransaction(savedTransactions);
   }
 
   parseTransaction(transaction) {

@@ -32,11 +32,11 @@ const cancelClearnes = () => {
     <div class="mt-4 subheader-text">
       <div class="flex item-center mb-3">
         <input id="all" v-model="choosenOption" class="mr-4" type="radio" name="fav_language" value="all">
-        <label for="html">all time</label><br>
+        <label for="all">all time</label><br>
       </div>
       <div class="flex item-center">
         <input id="specific" v-model="choosenOption"  class="mr-4" type="radio" name="fav_language" value="specific">
-        <label for="css">select multiple</label><br>
+        <label for="specific">select multiple</label><br>
       </div>
     </div>
   </div>

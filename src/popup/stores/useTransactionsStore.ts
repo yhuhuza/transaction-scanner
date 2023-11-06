@@ -19,7 +19,8 @@ export const useTransactionsStore = defineStore<
     setQueryTimeout(): void,
     getSavedTransactions(): Promise<void>,
     setOptionValue(value: string): void,
-    deleteTransactions(transactions: string[]): void,
+    deleteTransactions(transactions: string[]): Promise<void>,
+    clearAllTransactions(): Promise<void> 
   }
 >('transactions', {
   state: () => ({
@@ -41,15 +42,19 @@ export const useTransactionsStore = defineStore<
     async getSavedTransactions() {
       const chachedTransactions: string | undefined 
         = await getStorageData('transactions');
+      if (!chachedTransactions?.includes('transactions')) return;
       this.savedTransactions =  JSON.parse(chachedTransactions);
     },
     setOptionValue(value) {
       this.choosenOptions = value;
     },
-    async deleteTransactions(transactions) {
+    async deleteTransactions(transactions): Promise<void> {
       this.savedTransactions = this.savedTransactions.filter(transaction => !transactions.includes(transaction.hashValue));
-      console.log('Saved', this.savedTransactions);
       await sendContentMessage({action: 'deleteTransactions', data: { savedTransactions: this.savedTransactions }});
+    },
+    async clearAllTransactions() {
+      this.savedTransactions = [];
+      await sendContentMessage({action: 'clearAllTransactions' });
     },
     setQueryTimeout() {
       this.madeQuery = true;
