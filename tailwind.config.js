@@ -15,6 +15,7 @@ module.exports = {
         'dark-coal': '#0D0D0D',
         'gray': '#333333',
         'pink': '#E203B7',
+        'redish': '#E32B16',
       },
       spacing: {
         'oof': '105%',

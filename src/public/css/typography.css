@@ -54,6 +54,22 @@
     font-weight: 400;
 }
 
+.subheader-text {
+    color: #000;
+    font-family: Monserrat Regular, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.bold-subheader-text {
+    color: #000;
+    font-family: Monserrat Bold, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+}
+
 .input-text {
     color: #000;
     font-family: Monserrat Medium;
