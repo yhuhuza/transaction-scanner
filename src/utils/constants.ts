@@ -36,7 +36,7 @@ const SETTINGS_MENU: SettingsMenuElements[] = [
     title: 'Delete saved transactions',
     image: RubbishImage,
     alt: 'rubbish',
-    path: 'delete',
+    path: '/cleartransactions',
   },
   {
     title: 'Choose your currency for comparison',

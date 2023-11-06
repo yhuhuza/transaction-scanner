@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import App from '../App.vue';
+import ClearTransactions from '../components/ClearTransactions/ClearTransactions.vue';
 import LanguageChanger from '../components/LanguageChanger/LanguageChanger.vue';
 import SettingsElement from '../components/SettingsElement/SettingsElement.vue';
 import TransactionHistory from '../components/TransactionHistory/TransactionHistory.vue';
@@ -29,6 +30,10 @@ export default createRouter({
     {
       path: '/language',
       component: LanguageChanger
+    },
+    {
+      path: '/cleartransactions',
+      component: ClearTransactions
     },
   ],
 });
