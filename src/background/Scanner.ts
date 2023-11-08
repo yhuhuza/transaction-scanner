@@ -21,7 +21,7 @@ export default class Scanner {
   }
 
   async clearAllTransactions(): Promise<void> {
-    await browser.storage.local.clear();
+    await browser.storage.local.remove(this.name);
   }
 
   checkIfTransactionAlreadyExist(hashValue: string): boolean {
@@ -30,15 +30,14 @@ export default class Scanner {
 
   async saveTransaction(parsedData: ParsedTransaction): Promise<void> {
     this.transactions.push(parsedData);
-    await browser.storage.local.remove(this.name);
+    await this.clearAllTransactions();
     await setStorageData(this.name, JSON.stringify(this.transactions));
   }
 
   async deleteTransactions({ request }): Promise<void> {
     await this.clearAllTransactions();
     const { savedTransactions } = request.data;
-    this.transactions = savedTransactions;
-    await this.saveTransaction(savedTransactions);
+    await setStorageData(this.name, JSON.stringify(savedTransactions));
   }
 
   parseTransaction(transaction) {
@@ -62,23 +61,35 @@ export default class Scanner {
     };
   }
 
+  async showExistingTransaction(transactionHash: string, tabId: string): Promise<void> {
+    const existingTransaction = this.transactions.find((transaction) => transaction.hashValue === transactionHash);
+    await chrome.runtime.sendMessage(tabId, {
+      action: 'displayExistingTransaction',
+      data: existingTransaction,
+    });
+  }
+
   async fetchTransactionData(data: Fetch_Data): Promise<void> {
     const { request, sender } = data;
     const url: string = `https://apilist.tronscanapi.com/api/transaction-info?hash=${request.data.hash}`;
     fetch(url, { headers: { 'TRON-PRO-API-KEY': API_KEY }})
       .then(response => response.json())
-      .then(async transaction => {
+      .then(async (transaction) => {
+        const tabId: string = sender.id;
         if (!transaction.contractRet) {
-          await chrome.runtime.sendMessage(sender.id, {
+          await chrome.runtime.sendMessage(tabId, {
             action: 'displayError',
           });
           return ;
         }
         const parsedTransaction = this.parseTransaction(transaction);
         const transactionExist = this.checkIfTransactionAlreadyExist(parsedTransaction.hashValue);
-        if (transactionExist) return;
+        if (transactionExist) {
+          await this.showExistingTransaction(transaction.hash, tabId);
+          return ;
+        };
         await this.saveTransaction(parsedTransaction);
-        await chrome.runtime.sendMessage(sender.id, {
+        await chrome.runtime.sendMessage(tabId, {
           action: 'saveData',
           data: parsedTransaction,
         });

@@ -20,7 +20,8 @@ export const useTransactionsStore = defineStore<
     getSavedTransactions(): Promise<void>,
     setOptionValue(value: string): void,
     deleteTransactions(transactions: string[]): Promise<void>,
-    clearAllTransactions(): Promise<void> 
+    clearAllTransactions(): Promise<void>,
+    displayExistingTransaction(transaction: ParsedTransaction): void,
   }
 >('transactions', {
   state: () => ({
@@ -42,7 +43,7 @@ export const useTransactionsStore = defineStore<
     async getSavedTransactions() {
       const chachedTransactions: string | undefined 
         = await getStorageData('transactions');
-      if (!chachedTransactions?.includes('transactions')) return;
+      if (!chachedTransactions) return;
       this.savedTransactions =  JSON.parse(chachedTransactions);
     },
     setOptionValue(value) {
@@ -55,6 +56,9 @@ export const useTransactionsStore = defineStore<
     async clearAllTransactions() {
       this.savedTransactions = [];
       await sendContentMessage({action: 'clearAllTransactions' });
+    },
+    displayExistingTransaction(transaction): void {
+      this.lastTransaction = transaction;
     },
     setQueryTimeout() {
       this.madeQuery = true;

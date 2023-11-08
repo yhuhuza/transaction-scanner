@@ -23,6 +23,9 @@ browser.runtime.onMessage.addListener(async (request: AllowedType) => {
     	transactionsStore.setTransaction(data);
 	} else if (request.action === 'displayError') {
 		transactionsStore.setQueryTimeout();
+	} else if (request.action === 'displayExistingTransaction') {
+		const { data } = request;
+		transactionsStore.displayExistingTransaction(data);
 	}
 });
 
