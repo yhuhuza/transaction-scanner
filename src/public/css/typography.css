@@ -121,3 +121,45 @@
     font-size: 16px;
     font-weight: 500;
 }
+
+.download-page-header {
+    color: #000;        
+    font-family: Monserrat Semibold, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 41.35px;
+    letter-spacing: 0.129px;
+}
+
+.download-subheader {
+    color: #000;
+    font-family: Monserrat Bold, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32.276px;
+    letter-spacing: 0.101px;
+}
+
+.download-main-text {
+    color: #000;
+    font-family: Monserrat Medium, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.download-button-text {
+    color: #FFF;
+    text-align: center;
+    font-family: Monserrat Bold, sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.698px;
+    letter-spacing: 0.074px;
+    text-transform: uppercase;
+}
+

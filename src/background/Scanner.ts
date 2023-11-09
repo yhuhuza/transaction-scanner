@@ -69,6 +69,10 @@ export default class Scanner {
     });
   }
 
+  async openPdfWindow(): Promise<void> {
+    window.open();
+  }
+
   async fetchTransactionData(data: Fetch_Data): Promise<void> {
     const { request, sender } = data;
     const url: string = `https://apilist.tronscanapi.com/api/transaction-info?hash=${request.data.hash}`;

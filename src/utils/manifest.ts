@@ -3,7 +3,7 @@ import pkg from '../../package.json';
 const sharedManifest: Partial<chrome.runtime.ManifestBase> = {
   content_scripts: [
     {
-      js: ['/popup/main.ts'],
+      js: ['/content/content.ts'],
       matches: ['*://*/*'],
       run_at: 'document_end',
     },

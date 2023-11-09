@@ -89,7 +89,12 @@ input:checked + .slider:before {
 td, th {
   text-align: left;
   padding: 6px;
-  word-wrap:break-word
+  word-wrap: break-word;
+}
+
+.main-table {
+    border-collapse: separate; 
+    border-spacing: 25px;
 }
 
 table {
