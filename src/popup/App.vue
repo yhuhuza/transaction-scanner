@@ -68,5 +68,4 @@ const mainPage = computed(() => {
 .hide-enter-to {
   transform: translateX(0);
 }
-
 </style>

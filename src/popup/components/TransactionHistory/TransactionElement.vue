@@ -22,6 +22,10 @@ const setLastTransaction = () => {
   transactionStore.setTransaction(transactionDetails?.value);
   router.push('/index.html');
 };
+
+const downloadPdf = async () => {
+  window.open('content/content.html');
+};
 </script>
 
 <template>
@@ -37,9 +41,10 @@ const setLastTransaction = () => {
     <div class="mt-4 flex items-center justify-between input-text">
       <button class="px-6 py-2 border rounded-lg dark:text-white" @click="setLastTransaction()">{{ t('history.details') }}</button>
       <div
-          class="
-          download-pdf px-5 py-2 border rounded-lg border-marine dark:text-white
-          bg-marine white-bold-text cursor-pointer flex items-center justify-between">
+        class="
+        download-pdf px-5 py-2 border rounded-lg border-marine dark:text-white
+        bg-marine white-bold-text cursor-pointer flex items-center justify-between"
+        @click="downloadPdf()">
           PDF
       </div>
     </div>

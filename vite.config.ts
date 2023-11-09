@@ -11,6 +11,11 @@ export default defineConfig(({ mode }) => {
   return {
     root: 'src',
     build: {
+      rollupOptions: {
+        input: {
+          'content': path.resolve(__dirname, './src/content/content.html'),
+        },
+      },
       outDir: `../dist/app_${Number(env.MANIFEST_VERSION)}`,
     },
     resolve: {
