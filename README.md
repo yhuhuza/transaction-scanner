@@ -9,6 +9,23 @@ Key Features:
 * Currency and coin converter
 * Customizable background theme colors and language settings
 
+
 <p align="center">
   <img src="./src/assets/readme/main-screen.png" alt="Main Screen" width="738">
 </p>
+
+
+<p align="center">
+  <img src="./src/assets/readme/history-screen.png" alt="History Screen" width="738">
+</p>
+
+
+<p align="center">
+  <img src="./src/assets/readme/aettings-screen.png" alt="Settings Screen" width="738">
+</p>
+
+<p align="center">
+  <img src="./src/assets/readme/pdf-screen.png" alt="PDF Screen" width="738">
+</p>
+
+
