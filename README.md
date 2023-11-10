@@ -8,3 +8,7 @@ Key Features:
 * Transaction download in PDF format
 * Currency and coin converter
 * Customizable background theme colors and language settings
+
+<p align="center">
+  <img src="./src/assets/readme/main-screen.png" alt="Main Screen" width="738">
+</p>
