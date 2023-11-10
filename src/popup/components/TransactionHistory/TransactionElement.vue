@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 
 import { ParsedTransaction } from '../../../types/scanner';
+import sendContentMessage from '../../../utils/tools/sendContentMessage';
 import { useTransactionsStore } from '../../stores/useTransactionsStore';
 
 const { t } = useI18n();
@@ -24,7 +25,7 @@ const setLastTransaction = () => {
 };
 
 const downloadPdf = async () => {
-  window.open('content/content.html');
+  await sendContentMessage({ action: 'openPdfWindow', data: { hashValue: transactionDetails.value?.hashValue } });
 };
 </script>
 

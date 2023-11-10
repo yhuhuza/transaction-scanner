@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia';
 
-
 import { ParsedTransaction } from '../../types/scanner';
 import getStorageData from '../../utils/tools/getStorageData';
 import sendContentMessage from '../../utils/tools/sendContentMessage';

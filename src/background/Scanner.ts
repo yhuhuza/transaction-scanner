@@ -9,9 +9,16 @@ import { API_KEY } from './constants/constants';
 export default class Scanner {
   name: string;
   transactions: ParsedTransaction[];
+  hashOfPrintedTransaction: string;
   constructor() {
     this.name = 'transactions';
     this.transactions = [];
+    this.hashOfPrintedTransaction = '';
+  }
+
+  setPrintedTransaction(data): void {
+    const { transactionHash } = data.request.data;
+    this.hashOfPrintedTransaction = transactionHash;
   }
 
   async getSavedTransactions(): Promise<void> {
@@ -69,8 +76,23 @@ export default class Scanner {
     });
   }
 
-  async openPdfWindow(): Promise<void> {
-    window.open();
+  async getTransactionToPrint(): Promise<void> {
+    const [activeTab] = await browser.tabs.query({ active: true, currentWindow: true });
+    const tabId = activeTab.id;
+    const foundTransaction = this.transactions.find((transaction) => transaction.hashValue === this.hashOfPrintedTransaction);
+    await chrome.tabs.sendMessage(tabId, {
+      action: 'savePdfTransaction',
+      data: {
+        transaction: foundTransaction,
+      }
+    });
+  }
+
+  async openPdfWindow({ request }): Promise<void> {
+    const { hashValue } = request.data;
+    const foundTransaction = this.transactions.find((transaction) => transaction.hashValue === hashValue);
+    const dataString = JSON.stringify(foundTransaction);
+    browser.windows.create({ url: `./content/content.html?${encodeURIComponent(dataString)}` });
   }
 
   async fetchTransactionData(data: Fetch_Data): Promise<void> {

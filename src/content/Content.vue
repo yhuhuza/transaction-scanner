@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-
+const decodedParams = decodeURIComponent(window.location.search);
+const transactionDetails = JSON.parse(decodedParams.replace('?', ''));
 </script>
 
 <template>
@@ -15,39 +16,39 @@
     <table class="dark-regular-text main-table">
       <tr class="mb-table-gap main-table">
         <td class="w-teh download-subheader">Hash</td>
-        <td class="download-main-text">2949dbdf85401042d66b11c70d0897a1b592b17b882278d74a4ac12da9bdb1eb</td>
+        <td class="download-main-text hashValue">{{ transactionDetails.hashValue }}</td>
       </tr>
       <tr class="mb-table-gap main-table">
         <td class="w-teh download-subheader">Time</td>
-        <td class="download-main-text">2023-09-21 08:38:15 (Local)</td>
+        <td class="download-main-text">{{ transactionDetails.timeRange }}</td>
       </tr>
       <tr class="mb-table-gap main-table">
         <td class="w-teh download-subheader">From</td>
-        <td class="download-main-text">TU4vEruvZwLLkSfV9bNw12EJTPvNr7Pvaa</td>
+        <td class="download-main-text">{{ transactionDetails.accountFrom }}</td>
       </tr>
       <tr class="mb-table-gap main-table">
         <td class="w-teh download-subheader">To</td>
-        <td class="download-main-text">TU4vEruvZwLLkSfV9bNw12EJTPvNr7Pvaa</td>
+        <td class="download-main-text">{{ transactionDetails.accountTo }}</td>
       </tr>
       <tr class="mb-table-gap main-table">
         <td class="w-teh download-subheader">Transferred</td>
-        <td class="download-main-text">2,700 USDT</td>
+        <td class="download-main-text">{{ transactionDetails.transferredValue }} {{ transactionDetails.transactionSymbol }}</td>
       </tr>
       <tr class="mb-table-gap main-table">
         <td class="w-teh download-subheader">Result</td>
-        <td class="download-main-text">Successful</td>
+        <td class="download-main-text">{{ transactionDetails.resultValue }}</td>
       </tr>
       <tr class="mb-table-gap main-table">
         <td class="w-teh download-subheader">Status</td>
-        <td class="download-main-text">Confirmed</td>
+        <td class="download-main-text">{{ transactionDetails.confirmedStatus }}</td>
       </tr>
       <tr class="mb-table-gap main-table">
         <td class="w-teh download-subheader">Block</td>
-        <td class="download-main-text">54881309</td>
+        <td class="download-main-text">{{ transactionDetails.blockValue}}</td>
       </tr>
       <tr class="mb-table-gap main-table">
         <td class="w-teh download-subheader">Resources Consumed & Fee</td>
-        <td class="download-main-text">0.345 TRX  345 Bandwidth  31,895 Energy</td>
+        <td class="download-main-text">0.345 TRX  345 Bandwidth  {{ transactionDetails.costValues.energyTotal }} Energy</td>
       </tr>
     </table>
     <div class="flex item-center justify-center mt-16">
