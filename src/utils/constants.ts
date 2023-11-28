@@ -1,3 +1,5 @@
+import GitHub from '../assets/git-hub-qr.svg';
+import LinkedInLogo from '../assets/linked-in-qr.svg';
 import BitcoinImage from '../assets/logo/bitcoin-sign.svg';
 import ChinaLanguage from '../assets/logo/china-language.svg';
 import EnglishLanguage from '../assets/logo/english-language.svg';
@@ -5,6 +7,7 @@ import GlobeImage from '../assets/logo/globe-sign.svg';
 import HelpImage from '../assets/logo/help-sign.svg';
 import RubbishImage from '../assets/logo/rubbish-sign.svg';
 import RussianLanguage from '../assets/logo/russian-language.svg';
+import TeleframQr from '../assets/telegram-qr.png';
 
 interface SettingsMenuElements {
   title: string;
@@ -66,8 +69,61 @@ const LANGUAGES_ARRAY: LanguagesArray[]  = [
   {img: ChinaLanguage, title: '中国人', id: 'ch'},
 ];
 
+const Y_COORDINATES: number[] = [70, 85, 100, 115, 130, 145, 160, 175, 190];
+
+const TERMS_ON_CHECK: string[] = [
+  `Hash: `,
+  `Time: `,
+  `From: `, 
+  `To: `,
+  `Transferred: `, 
+  `Result: `, 
+  `Status: `, 
+  `Block: `, 
+  `Resources: `,
+];
+
+const SOCIAL_MEDIA = [
+  {
+    text: {
+      title: `LinkedIn`,
+      xcoordinate: 30,
+    },
+    image: {
+      name: LinkedInLogo,
+      formate: "PNG",
+      xcoordinate: 20,
+    }
+  },
+  {
+    text: {
+      title: `Github`,
+      xcoordinate: 102,
+    },
+    image: {
+      name: GitHub,
+      formate: "SVG",
+      xcoordinate: 90,
+    }
+  },
+  {
+    text: {
+      title: `Telegram`,
+      xcoordinate: 160,
+    },
+    image: {
+      name: TeleframQr,
+      formate: "PNG",
+      xcoordinate: 150,
+    }
+  }
+];
+
 export {
   SETTINGS_MENU,
   NETWORK_ELEMENTS,
-  LANGUAGES_ARRAY
+  LANGUAGES_ARRAY,
+  Y_COORDINATES,
+  TERMS_ON_CHECK,
+  SOCIAL_MEDIA,
 };
