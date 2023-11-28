@@ -19,7 +19,7 @@ const router = useRouter();
           <img class="w-7 h-7 dark:invert" :src="item.image" :alt="item.alt" />
         </div>
           <p class="flex-start settings-text mr-auto dark:text-white">{{ item.title }}</p>
-          <div class="w-2/12 flex items-center justify-center h-full">
+          <div class="w-2/12 flex items-center justify-center">
             <img class="dark:invert" src="../../../assets/logo/arrow-forward.svg" alt="arrow" />
           </div>
     </div>
