@@ -1,15 +1,12 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia';
 import { useI18n } from 'vue-i18n';
-import { useRoute } from 'vue-router';
 
 import { useTransactionsStore } from '../../stores/useTransactionsStore';
 
 import TransactionElement from './TransactionElement.vue';
 
 const { t } = useI18n();
-const router = useRoute();
-console.log('Router', router);
 const transactionStore = useTransactionsStore();
 
 const { savedTransactions } = storeToRefs(transactionStore);

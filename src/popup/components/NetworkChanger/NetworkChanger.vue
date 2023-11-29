@@ -21,7 +21,7 @@ const openListOfNetworks = useToggle(listOpened);
       @click="openListOfNetworks()"
     >
       <span class="heading1">{{ network }}</span>
-      <network-list v-if="listOpened" class=""></network-list>
+      <network-list v-if="listOpened"></network-list>
       <div>
         <img src="../../../assets/logo/arrow-list.svg" alt="arrow"/>
       </div>
