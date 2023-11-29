@@ -8,7 +8,8 @@ export const useConverterStore = defineStore<
   },
   Record<never, never>,
   {
-    setCoin(coin: string): void;
+    init(): Promise<void>;
+    setValue(value: string, valueType: string): void;
   }
 >('converter', {
   state: () => ({
@@ -16,9 +17,19 @@ export const useConverterStore = defineStore<
     fiat: 'USD'
   }),
   actions: {
-    setCoin(coin) {
-      this.coin = coin;
-      localStorage.setItem("converter", coin);
+    async init() {
+        this.coin = localStorage.getItem("coin");
+        if (!this.coin) this.coin = 'USDT';
+        this.fiat = localStorage.getItem("fiat");
+        if (!this.fiat) this.fiat = 'USD';
+    },
+    setValue(value, valueType) {
+        if (valueType === 'coin') {
+            this.coin = value;
+        } else {
+            this.fiat = value;
+        }
+      localStorage.setItem(valueType, value);
     },
   },
 });

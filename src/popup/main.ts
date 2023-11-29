@@ -10,12 +10,14 @@ import ru from '../utils/locales/ru.json';
 
 import App from './App.vue';
 import router from './routes/routes';
+import { useConverterStore } from './stores/useConverterStore';
 import { useNetworkStore } from './stores/useNetworkStore';
 import { useTransactionsStore } from './stores/useTransactionsStore';
 
 const pinia = createPinia();
 const networkStore = useNetworkStore(pinia);
 const transactionsStore = useTransactionsStore(pinia);
+const converterStore = useConverterStore(pinia);
 
 browser.runtime.onMessage.addListener(async (request: AllowedType) => {
 	if (request.action === 'saveData') {
@@ -29,7 +31,7 @@ browser.runtime.onMessage.addListener(async (request: AllowedType) => {
 	}
 });
 
-Promise.all([networkStore.init(), transactionsStore.getSavedTransactions()]);
+Promise.all([networkStore.init(), transactionsStore.getSavedTransactions(), converterStore.init()]);
 
 const i18n = createI18n({
 	legacy: false,
