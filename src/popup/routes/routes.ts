@@ -5,6 +5,7 @@ import ClearTransactions from '../components/ClearTransactions/ClearTransactions
 import LanguageChanger from '../components/LanguageChanger/LanguageChanger.vue';
 import SettingsElement from '../components/SettingsElement/SettingsElement.vue';
 import TransactionHistory from '../components/TransactionHistory/TransactionHistory.vue';
+import ValuesConverter from '../components/ValuesConverter/ValuesConverter.vue';
 
 export default createRouter({
   history: createWebHistory(),
@@ -34,6 +35,10 @@ export default createRouter({
     {
       path: '/cleartransactions',
       component: ClearTransactions
+    },
+    {
+      path: '/converter',
+      component: ValuesConverter
     },
   ],
 });

@@ -45,7 +45,7 @@ const SETTINGS_MENU: SettingsMenuElements[] = [
     title: 'Choose your currency for comparison',
     image: BitcoinImage,
     alt: 'bitcoin',
-    path: 'currency',
+    path: '/converter',
   },
   {
     title: 'Help & Support',
