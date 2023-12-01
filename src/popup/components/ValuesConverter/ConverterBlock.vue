@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { useToggle} from '@vueuse/core';
 import { storeToRefs } from 'pinia';
-import { ref, computed, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 
+import { CONVERTER_KEY } from '../../../background/constants/constants';
 import { useConverterStore } from '../../stores/useConverterStore';
 
 import ValuesList from './ValuesList.vue';
@@ -11,8 +12,11 @@ const props = defineProps(['type', 'numbervalue', 'list']);
 const converterStore = useConverterStore();
 const { coinName, fiatName, coinValue, fiatValue  } = storeToRefs(converterStore);
 
+let timerId: any = 0;
 const coinInput = ref(null);
 const openedList = ref(false);
+let definedValue = props.type === 'coin' ? coinValue : fiatValue;
+const defindedName = props.type === 'coin' ? coinName.value : fiatName.value;
 
 const focusInput = () => {
   if (coinInput.value && props.type === 'coin') {
@@ -22,13 +26,27 @@ const focusInput = () => {
 onMounted(focusInput);
 
 const openList = useToggle(openedList);
-const defindedName = computed(() => {
-    return props.type === 'coin' ? coinName.value : fiatName.value;
-});
 
-const definedValue = computed(() => {
-    return props.type === 'coin' ? coinValue.value : fiatValue.value;
-});
+const handleInput = () => {
+  if (timerId) {
+    clearTimeout(timerId);
+  }
+
+  timerId = setTimeout(() => {
+
+    fetch(`https://min-api.cryptocompare.com/data/price?api_key=${CONVERTER_KEY}&fsym=${coinName.value}&tsyms=${fiatName.value}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const resolveNumber = Object.values(data)[0];
+        if (!coinValue) return null;
+        const type = props.type === 'coin' ? 'fiat' : 'coin';
+        const endValue = props.type === 'coin' 
+          ? resolveNumber * coinValue?.value
+          : coinValue?.value / resolveNumber;
+        converterStore.setValue(endValue, type);
+      });
+  }, 1500);
+};
 </script>
 
 <template>
@@ -46,6 +64,7 @@ const definedValue = computed(() => {
         v-model="definedValue"
         class="input-text-directions w-full download-subheader border-bottom" 
         type="text" 
+        @input="handleInput"
       />
     </div>
   </div>

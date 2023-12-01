@@ -5,7 +5,7 @@ import { useConverterStore } from '../../stores/useConverterStore';
 
 import ConverterBlock from './ConverterBlock.vue';
 
-const coinsList = ['USDT', 'Ethereum', 'Bitcoin'];
+const coinsList = ['USDT', 'ETH', 'BTC'];
 const fiatsList = ['USD', 'EUR', 'RUB'];
 
 const converterStore = useConverterStore();
