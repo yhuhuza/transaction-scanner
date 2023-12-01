@@ -3,10 +3,13 @@ import { storeToRefs } from 'pinia';
 
 import { useConverterStore } from '../../stores/useConverterStore';
 
-import ValuesBlock from './ValuesBlock.vue';
+import ConverterBlock from './ConverterBlock.vue';
+
+const coinsList = ['USDT', 'Ethereum', 'Bitcoin'];
+const fiatsList = ['USD', 'EUR', 'RUB'];
 
 const converterStore = useConverterStore();
-const { coin, fiat } = storeToRefs(converterStore);
+const { coinName, fiatName } = storeToRefs(converterStore);
 </script>
 
 <template>
@@ -23,13 +26,14 @@ const { coin, fiat } = storeToRefs(converterStore);
       Choose your currency for comparison:
     </div>
 
-    <div class="values-block h-64 w-full rounded-2xl mt-11 flex align-center justify-center background-gradient">
-      <div class="rounded-xl w-full m-1 bg-white flex flex-col">
-        <values-block class="h-64 w-full flex-col"></values-block>
+    <div class="w-full h-64 mt-11 p-1 rounded-2xl values-block background-gradient">
+      <div class="w-full h-full box-border rounded-xl bg-white flex flex-col">
+        <converter-block :list="coinsList" :type="'coin'"></converter-block>
+        <converter-block :list="fiatsList" :type="'fiat'"></converter-block>
       </div>
     </div>
     <p class="settings-text mt-11 text-center">
-      The exchange rate of {{ coin }} to {{ fiat }} is $1.00
+      The exchange rate of {{ coinName }} to {{ fiatName }} is $1.00
     </p>
   </section>
 </template>

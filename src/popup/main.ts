@@ -31,7 +31,7 @@ browser.runtime.onMessage.addListener(async (request: AllowedType) => {
 	}
 });
 
-Promise.all([networkStore.init(), transactionsStore.getSavedTransactions(), converterStore.init()]);
+Promise.all([networkStore.init(), transactionsStore.getSavedTransactions(), converterStore.initNames()]);
 
 const i18n = createI18n({
 	legacy: false,

@@ -3,33 +3,45 @@ import { defineStore } from 'pinia';
 export const useConverterStore = defineStore<
   'converter',
   {
-    coin: string | null;
-    fiat: string | null;
+    coinName: string | null;
+    fiatName: string | null;
+    coinValue: number | null;
+    fiatValue: number | null;
   },
   Record<never, never>,
   {
-    init(): Promise<void>;
-    setValue(value: string, valueType: string): void;
+    initNames(): Promise<void>;
+    setName(value: string, valueType: string): void;
+    setValue(value: number, valueType: string): void;
   }
 >('converter', {
   state: () => ({
-    coin: 'USDT',
-    fiat: 'USD'
+    coinName: 'USDT',
+    fiatName: 'USD',
+    coinValue: 1,
+    fiatValue: 1,
   }),
   actions: {
-    async init() {
-        this.coin = localStorage.getItem("coin");
-        if (!this.coin) this.coin = 'USDT';
-        this.fiat = localStorage.getItem("fiat");
-        if (!this.fiat) this.fiat = 'USD';
+    async initNames() {
+        this.coinName = localStorage.getItem("coin");
+        if (!this.coinName) this.coinName = 'USDT';
+        this.fiatName = localStorage.getItem("fiat");
+        if (!this.fiatName) this.fiatName = 'USD';
     },
-    setValue(value, valueType) {
+    setName(value, valueType) {
         if (valueType === 'coin') {
-            this.coin = value;
+            this.coinName = value;
         } else {
-            this.fiat = value;
+            this.fiatName = value;
         }
       localStorage.setItem(valueType, value);
     },
+    setValue(value, valueType) {
+        if (valueType === 'coin') {
+            this.coinValue = value;
+        } else {
+            this.fiatValue = value;
+        }
+    }
   },
 });

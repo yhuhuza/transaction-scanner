@@ -7,8 +7,8 @@ import { useConverterStore } from '../../stores/useConverterStore';
 
 const converterStore = useConverterStore();
 
-const setValue = (value: string) => {
-    converterStore.setValue(value, valueType);
+const setName = (value: string) => {
+    converterStore.setName(value, valueType);
 };
 </script>
 
@@ -23,7 +23,7 @@ class="
         v-for="value in coinList" 
         :key="value" 
         class="dark:text-white text py-sev pl-fth hover:bg-marine"
-        @click="setValue(value)"
+        @click="setName(value)"
     >
         {{ value }}
     </li>
