@@ -112,36 +112,15 @@ table {
   table-layout: fixed;
 }
 
-.coin {
-    position: relative;
-}
 
-.coin::after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    top: 8px;
-    left: 70px;
-    background: url("../../assets/logo/arrow-forward.svg") no-repeat center;
-    background-size: cover;
-    transform: rotate(90deg);
-}
-
-.input-block {
-    position: relative;
-}
-
-.input-block::before {
+.converter-block::before {
     content: "";
     display: block;
     position: absolute;
     width: 0;
-    width: 0;
-    height: 40px;
-    bottom: 40px;
-    right: 165px;
+    height: 60px;
+    bottom: 25%;
+    right: 15em;
     border: .5px solid rgba(0, 0, 0, 0.50);
 }
 
@@ -172,5 +151,16 @@ table {
 }
 
 .input-text-directions {
-    direction:rtl;
+    direction: rtl;
+}
+
+.arrow-down {
+    transform: rotate(90deg);
+}
+
+strong, .color-pink {
+    color: #E203B7 !important;
+    font-family: Monserrat Bold, sans-serif !important;
+    font-size: 16px;
+    font-weight: 700 !important;
 }

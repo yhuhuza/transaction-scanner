@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia';
+
 const props = defineProps(['list', 'type']);
 const coinList = props.list;
 const valueType = props.type;
@@ -6,6 +8,7 @@ const valueType = props.type;
 import { useConverterStore } from '../../stores/useConverterStore';
 
 const converterStore = useConverterStore();
+const { coinName, fiatName } = storeToRefs(converterStore);
 
 const setName = (value: string) => {
     converterStore.setName(value, valueType);
@@ -22,6 +25,7 @@ class="
     <li 
         v-for="value in coinList" 
         :key="value" 
+        :class="{ 'color-pink' : value === coinName || value === fiatName }"
         class="dark:text-white text py-sev pl-fth hover:bg-marine"
         @click="setName(value)"
     >
