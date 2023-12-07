@@ -51,7 +51,7 @@ const SETTINGS_MENU: SettingsMenuElements[] = [
     title: 'Help & Support',
     image: HelpImage,
     alt: 'help',
-    path: 'help',
+    path: '/help',
   }
 ];
 

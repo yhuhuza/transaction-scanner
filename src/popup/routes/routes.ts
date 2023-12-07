@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import App from '../App.vue';
 import ClearTransactions from '../components/ClearTransactions/ClearTransactions.vue';
+import HelpPage from '../components/HelpPage/HelpPage.vue';
 import LanguageChanger from '../components/LanguageChanger/LanguageChanger.vue';
 import SettingsElement from '../components/SettingsElement/SettingsElement.vue';
 import TransactionHistory from '../components/TransactionHistory/TransactionHistory.vue';
@@ -39,6 +40,10 @@ export default createRouter({
     {
       path: '/converter',
       component: ValuesConverter
+    },
+    {
+      path: '/help',
+      component: HelpPage
     },
   ],
 });
