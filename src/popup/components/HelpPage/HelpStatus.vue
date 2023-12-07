@@ -1,21 +1,23 @@
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 </script>
 
 <template>
   <div class="flex flex-col items-center mt-10">
     <div>
       <p class="settings-text dark:text-white">
-      Thank you for your inquiry!
+        {{ t('support.inquiryText') }}
       </p>
       <p class="settings-text mt-4 dark:text-white">
-          We will review it shortly and take it into consideration.
+        {{ t('support.reviewMessage') }}
       </p>
       <p class="settings-text mt-4 dark:text-white">
-          If you have any questions, please don't hesitate to reach out. 
+        {{ t('support.questionsMessage') }}
       </p>
       <p class="settings-text mt-4 dark:text-white">
-          Have a great day!
+        {{ t('support.goodDayMessage') }}
       </p>
     </div>
     <div class="w-36 h-46 mt-11">

@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 import { useTransactionsStore } from '../../stores/useTransactionsStore';
 
+const { t } = useI18n();
 const transactionStore = useTransactionsStore();
 const { lastTransaction } = storeToRefs(transactionStore);
 
@@ -12,7 +14,7 @@ const formattedDate = computed(() => new Date(lastTransaction.value?.timeRange))
 
 <template>
   <div class="mt-8">
-    <h3 class="big-semibold-header dark:text-white flex item-center justify-center mb-4">Transaction Details</h3>
+    <h3 class="big-semibold-header dark:text-white flex item-center justify-center mb-4">{{ t('details.title') }}</h3>
     <table class="dark-regular-text">
       <tr class="mb-6">
         <td class="w-teh font-semibold dark:text-white">Account</td>

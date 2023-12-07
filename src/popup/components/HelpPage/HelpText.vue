@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { ref, computed, Ref, defineEmits } from 'vue';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const eneteredText: Ref<string> = ref('');
 
 const renderQuantityOfSymbols = computed(() => {
@@ -28,18 +30,15 @@ const submitButton = () => {
 
 <template>
   <div class="mt-11 settings-text dark:text-white">
-    <p>
-      If you have any difficulties or questions about the extension's functionality, 
-      please write them in the box below.
-    </p>
-    <p class="mt-4">We will definitely assist you.</p>
+    <p>{{ t('support.writeQuestionTitle') }}</p>
+    <p class="mt-4">{{ t('support.assistMessage') }}</p>
     <div class="relative">
       <textarea 
       v-model="eneteredText"
       rows="10" 
       class="w-full border rounded-lg mt-10 py-3 px-6 box-border resize-none !text-black"
       :class="definedBorderColors"
-      :placeholder="'Please, write your question here...'"
+      :placeholder="t('support.placeholderMessage')"
       ></textarea>
       <p class="absolute bottom-2 right-2 mt-2 settings-text" :class="definedTextColors">
         {{ renderQuantityOfSymbols }}/500
@@ -53,7 +52,7 @@ const submitButton = () => {
         :class="definedButtonBackground"
         @click="submitButton"
       >
-        SEND message
+      {{ t('support.sendMessage') }}
       </button>
     </div>
   </div>

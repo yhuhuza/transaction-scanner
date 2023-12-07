@@ -2,6 +2,7 @@
 import { useDark } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 import DarkPlaceholder from '../../../assets/logo/placeholder-dark.png';
 import LightPlaceholder from '../../../assets/logo/placeholder-light.png';
@@ -11,6 +12,7 @@ import MistakePage from '../MistakePage/MistakePage.vue';
 import TransactionDetails from '../TransactionDetails/TransactionDetails.vue';
 
 let timerId: any = 0;
+const { t } = useI18n();
 const transactionStore = useTransactionsStore();
 const { lastTransaction, madeQuery } = storeToRefs(transactionStore);
 const searchQuery = ref('');
@@ -64,7 +66,7 @@ const sendRequestToServer = () => {
     </div>
     <div class="relative bottom-mtw">
       <router-link to="/history">
-        <button class="uppercase button-history mt-4 rounded-lg border-black heading2 w-full h-12 py-2 w-xmax">Transaction history</button>
+        <button class="uppercase button-history mt-4 rounded-lg border-black heading2 w-full h-12 py-2 w-xmax">{{ t('transactionHistory.title') }}</button>
      </router-link>
     </div>
   </div>

@@ -1,7 +1,11 @@
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n';
+
 import ToggleButton from '../ToggleButton/ToggleButton.vue';
 
 import SettingsMenu from './SettingsMenu.vue';
+
+const { t } = useI18n();
 </script>
 
 <template>
@@ -10,7 +14,7 @@ import SettingsMenu from './SettingsMenu.vue';
       <router-link class="w-10 h-10" to="/index.html" >
         <img class="h-full dark:invert" src="../../../assets/logo/arrow-back.svg" alt="arrow"/>
       </router-link>
-      <h2 class="dark:text-white w-full pl-ef section-header text-black text-xl uppercase">Settings</h2>
+      <h2 class="dark:text-white w-full pl-ef section-header text-black text-xl uppercase">{{ t('settings.title') }}</h2>
     </div>
     <div class="mb-8 flex items-center justify-center">
       <div class="w-7 h-7 mr-5">

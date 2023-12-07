@@ -1,5 +1,6 @@
 {
   "settings": {
+    "title": "Settings",
     "language": {
       "titleLanguage": "Language",
       "chooseLanguage": "Choose your language, please:"
@@ -8,5 +9,43 @@
   "history": {
     "title": "transaction history",
     "details": "Show more details"
+  },
+  "delete": {
+    "period": "Select the period for which to delete the saved transactions:",
+    "allTime": "all time",
+    "specifyTime": "select multiple",
+    "removeTransaction": "delete transactions",
+    "cancelButton": "Cancel",
+    "removeButton": "Delete",
+    "deleteAllTransactions": "Are you sure you want to delete all saved transactions?",
+    "deleteChoosenTransactions": "Are you sure you want to delete choosen transactions?"
+  },
+  "support": {
+    "title": "Support",
+    "inquiryText": "Thank you for your inquiry!",
+    "reviewMessage": "We will review it shortly and take it into consideration.",
+    "questionsText": "If you have any questions, please don't hesitate to reach out.",
+    "goodDayMessage": "Have a great day!",
+    "writeQuestionTitle": "If you have any difficulties or questions about the extension's functionality, please write them in the box below.",
+    "assistMessage": "We will definitely assist you.",
+    "sendMessage": "SEND message",
+    "placeholderMessage": "Please, write your question here..."
+  },
+  "transactionHistory": {
+    "title": "Transaction history"
+  },
+  "mistakePage": {
+    "wentWrong": "Something went wrong",
+    "verifyRequest": "Please, verify the accuracy of the entered data"
+  },
+  "details": {
+    "title": "Transaction Details"
+  },
+  "converter": {
+    "title": "Converter",
+    "chooesCurrency": "Choose your currency for comparison:",
+    "exchangeRate": "The exchange rate of",
+    "to": "to",
+    "is": "is"
   }
 }

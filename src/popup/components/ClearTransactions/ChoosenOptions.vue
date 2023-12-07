@@ -3,6 +3,7 @@ import { useDark } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 import { ref, computed, defineEmits } from 'vue';
 import { Ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 
 import LightTrashBin from '../../../assets/logo/light-trash-picture.svg';
@@ -11,6 +12,7 @@ import { useTransactionsStore } from '../../stores/useTransactionsStore';
 
 import TransactionList from './TransactionsList.vue';
 
+const { t } = useI18n();
 const transactionStore = useTransactionsStore();
 const transactionList: Ref<string[]> = ref([]);
 const emit = defineEmits(['cancelClearnes']);
@@ -40,8 +42,8 @@ const deleteTransactions = async () => {
 };
 
 const definedDeleteText = computed(() => choosenOptions.value === 'all' 
-  ? 'Are you sure you want to delete all saved transactions?'
-  : 'Are you sure you want to delete choosen transactions?'
+  ? t('delete.deleteAllTransactions')
+  : t('delete.deleteChoosenTransactions')
 );
 </script>
 
@@ -64,8 +66,18 @@ const definedDeleteText = computed(() => choosenOptions.value === 'all'
       {{ definedDeleteText }}
     </p>
     <div class="w-xmax mt-10 flex justify-between bold-subheader-text relative bottom-0">
-      <button class="border rounded-lg py-2 px-8 uppercase dark:text-white" @click="cancelDeletion">Cancel</button>
-      <button class="border rounded-lg py-2 px-8 bg-redish text-white uppercase dark:text-white" @click="deleteTransactions()">Delete</button>
+      <button 
+        class="border rounded-lg py-2 px-8 uppercase dark:text-white" 
+        @click="cancelDeletion"
+        >
+          {{ t('delete.cancelButton') }}
+      </button>
+      <button 
+        class="border rounded-lg py-2 px-8 bg-redish text-white uppercase dark:text-white" 
+        @click="deleteTransactions()"
+        >
+          {{ t('delete.removeButton') }}
+        </button>
     </div>
   </div>
 </template>

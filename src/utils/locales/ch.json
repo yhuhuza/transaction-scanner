@@ -1,5 +1,6 @@
 {
   "settings": {
+    "title": "设置",
     "language": {
       "titleLanguage": "语言",
       "chooseLanguage": "请选择您的语言:"
@@ -8,5 +9,43 @@
   "history": {
     "title": "交易记录",
     "details": "显示更多详情"
+  },
+  "delete": {
+    "period": "选择要删除已保存交易的时间段:",
+    "allTime": "整天",
+    "specifyTime": "选择多个",
+    "removeTransaction": "删除交易",
+    "cancelButton": "取消",
+    "removeButton": "删除",
+    "deleteAllTransactions": "您确定要删除所有已保存的交易吗?",
+    "deleteChoosenTransactions": "您确定要删除所选交易吗?"
+  },
+  "support": {
+    "title": "支持",
+    "inquiryText": "感谢您的请求!",
+    "reviewMessage": "我们将很快审查并记录",
+    "questionsText": "如果您有任何疑问，请随时联系",
+    "goodDayMessage": "祝你有美好的一天！",
+    "writeQuestionTitle": "如果您对扩展有任何困难或疑问，请将其写在下面的字段中。",
+    "assistMessage": "我们一定会帮助您",
+    "sendMessage": "发送一个消息",
+    "placeholderMessage": "请在这里写下您的问题..."
+  },
+  "transactionHistory": {
+    "title": "交易记录"
+  },
+  "mistakePage": {
+    "wentWrong": "出了些问题",
+    "verifyRequest": "请验证输入数据的准确性"
+  },
+  "details": {
+    "title": "交易明细"
+  },
+  "converter": {
+    "title": "转换器",
+    "chooesCurrency": "选择您的货币进行比较:",
+    "exchangeRate": "汇率为",
+    "to": "到",
+    "is": "是"
   }
 }
