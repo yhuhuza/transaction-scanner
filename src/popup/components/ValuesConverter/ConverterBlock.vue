@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useToggle} from '@vueuse/core';
 import { storeToRefs } from 'pinia';
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
 import { CONVERTER_KEY } from '../../../background/constants/constants';
 import { useConverterStore } from '../../stores/useConverterStore';
@@ -16,7 +16,7 @@ let timerId: any = 0;
 const coinInput = ref(null);
 const openedList = ref(false);
 let definedValue = props.type === 'coin' ? coinValue : fiatValue;
-const defindedName = props.type === 'coin' ? coinName.value : fiatName.value;
+const defindedName = computed(() => props.type === 'coin' ? coinName.value : fiatName.value);
 
 const focusInput = () => {
   if (coinInput.value && props.type === 'coin') {
@@ -27,13 +27,12 @@ onMounted(focusInput);
 
 const openList = useToggle(openedList);
 
-const handleInput = () => {
+function handleInput() {
   if (timerId) {
     clearTimeout(timerId);
   }
 
   timerId = setTimeout(() => {
-
     fetch(`https://min-api.cryptocompare.com/data/price?api_key=${CONVERTER_KEY}&fsym=${coinName.value}&tsyms=${fiatName.value}`)
       .then((response) => response.json())
       .then((data) => {

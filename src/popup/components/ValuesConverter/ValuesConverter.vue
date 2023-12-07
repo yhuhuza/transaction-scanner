@@ -1,15 +1,42 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia';
+import { ref, watch, computed, Ref } from 'vue';
 
+import { CONVERTER_KEY } from '../../../background/constants/constants';
 import { useConverterStore } from '../../stores/useConverterStore';
 
 import ConverterBlock from './ConverterBlock.vue';
 
 const coinsList = ['USDT', 'ETH', 'BTC'];
 const fiatsList = ['USD', 'EUR', 'RUB'];
+const fiatSymbol = {
+  'USD': '$',
+  'EUR': '€',
+  'RUB': '₽',
+};
 
 const converterStore = useConverterStore();
 const { coinName, fiatName } = storeToRefs(converterStore);
+
+const coinRate: Ref<number | unknown> = ref(0);
+
+async function definedCoinRate(): Promise<void> {
+  return fetch(`https://min-api.cryptocompare.com/data/price?api_key=
+    ${CONVERTER_KEY}&fsym=${coinName.value}&tsyms=${fiatName.value}`)
+    .then((result) => result.json())
+    .then((data) => {
+      if (Object.keys(data).length === 0) return null;
+      coinRate.value = (Object.values(data))[0];
+    });
+};
+
+watch([coinName, fiatName ], () => {
+  return definedCoinRate();
+});
+
+definedCoinRate();
+
+const definedSymbol = computed(() => fiatSymbol[fiatName?.value]);
 </script>
 
 <template>
@@ -30,7 +57,8 @@ const { coinName, fiatName } = storeToRefs(converterStore);
       </div>
     </div>
     <p class="settings-text mt-11 text-center">
-      The exchange rate of <strong>{{ coinName }}</strong> to <strong>{{ fiatName }}</strong> is $1.00
+      The exchange rate of <strong>{{ coinName }}</strong> to <strong>{{ fiatName }}</strong> 
+      is {{ definedSymbol }} {{ coinRate }}
     </p>
   </section>
 </template>

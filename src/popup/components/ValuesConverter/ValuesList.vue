@@ -26,7 +26,7 @@ class="
         v-for="value in coinList" 
         :key="value" 
         :class="{ 'color-pink' : value === coinName || value === fiatName }"
-        class="dark:text-white text py-sev pl-fth hover:bg-marine"
+        class="dark:text-white text py-sev pl-fth hover:bg-marine cursor-pointer"
         @click="setName(value)"
     >
         {{ value }}
