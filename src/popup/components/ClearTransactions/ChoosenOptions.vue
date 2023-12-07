@@ -38,6 +38,11 @@ const deleteTransactions = async () => {
   await transactionStore.deleteTransactions(transactionList.value);
   cancelDeletion();
 };
+
+const definedDeleteText = computed(() => choosenOptions.value === 'all' 
+  ? 'Are you sure you want to delete all saved transactions?'
+  : 'Are you sure you want to delete choosen transactions?'
+);
 </script>
 
 <template>
@@ -55,12 +60,12 @@ const deleteTransactions = async () => {
           @manipulate-transaction="manipulateTransaction"
         ></TransactionList>
     </div>
-    <p class="mt-8 subheader-text text-center">
-        Are you sure you want to delete all saved transactions?
-      </p>
+    <p class="mt-8 subheader-text text-center dark:text-white">
+      {{ definedDeleteText }}
+    </p>
     <div class="w-xmax mt-10 flex justify-between bold-subheader-text relative bottom-0">
-      <button class="border rounded-lg py-2 px-8 uppercase" @click="cancelDeletion">Cancel</button>
-      <button class="border rounded-lg py-2 px-8 bg-redish text-white uppercase" @click="deleteTransactions()">Delete</button>
+      <button class="border rounded-lg py-2 px-8 uppercase dark:text-white" @click="cancelDeletion">Cancel</button>
+      <button class="border rounded-lg py-2 px-8 bg-redish text-white uppercase dark:text-white" @click="deleteTransactions()">Delete</button>
     </div>
   </div>
 </template>

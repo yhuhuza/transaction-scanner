@@ -19,9 +19,9 @@ const changeInputStatus = () => {
 </script>
 
 <template>
-    <div class="w-xmax h-fit dark-regular-text flex justify-between mb-4">
+    <div class="w-xmax h-fit dark-regular-text flex justify-between mb-4 dark:text-white">
         <input v-model="checkedInput" type="checkbox" @click="changeInputStatus()"/>
-        <span class="small-bold-text">{{ formattedDate }}</span>
+        <span class="small-bold-text dark:!text-white">{{ formattedDate }}</span>
         <span>{{ transaction.transferredValue }}</span>
         <span >{{ transaction.transactionSymbol }}</span>
         <span>{{  transaction.resultValue }}</span>

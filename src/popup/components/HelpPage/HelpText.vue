@@ -27,7 +27,7 @@ const submitButton = () => {
 </script>
 
 <template>
-  <div class="mt-11 settings-text">
+  <div class="mt-11 settings-text dark:text-white">
     <p>
       If you have any difficulties or questions about the extension's functionality, 
       please write them in the box below.
@@ -37,7 +37,7 @@ const submitButton = () => {
       <textarea 
       v-model="eneteredText"
       rows="10" 
-      class="w-full border rounded-lg mt-10 py-3 px-6 box-border resize-none"
+      class="w-full border rounded-lg mt-10 py-3 px-6 box-border resize-none !text-black"
       :class="definedBorderColors"
       :placeholder="'Please, write your question here...'"
       ></textarea>

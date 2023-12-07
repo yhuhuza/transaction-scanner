@@ -47,7 +47,7 @@ const definedSymbol = computed(() => fiatSymbol[fiatName?.value]);
       </router-link>
       <h2 class="dark:text-white w-full pl-ef section-header text-black text-xl uppercase">Converter</h2>
     </div>
-    <div class="text-center subheader-text">
+    <div class="text-center subheader-text dark:text-white">
       Choose your currency for comparison:
     </div>
     <div class="w-full h-64 mt-11 p-1 rounded-2xl values-block background-gradient">
@@ -56,7 +56,7 @@ const definedSymbol = computed(() => fiatSymbol[fiatName?.value]);
         <converter-block :list="fiatsList" :type="'fiat'"></converter-block>
       </div>
     </div>
-    <p class="settings-text mt-11 text-center">
+    <p class="settings-text mt-11 text-center dark:text-white">
       The exchange rate of <strong>{{ coinName }}</strong> to <strong>{{ fiatName }}</strong> 
       is {{ definedSymbol }} {{ coinRate }}
     </p>
