@@ -18,4 +18,9 @@ const i18n = createI18n({
 	},
 });
 
-createApp(Content).use(i18n).mount('#content');
+const app = createApp(Content);
+app.use(i18n);
+
+if (document.location.href.includes(chrome.runtime.id)) {
+	app.mount('#content');
+}

@@ -9,7 +9,7 @@ const doc = new jsPDF();
 const { t, locale } = useI18n();
 
 const decodedParams = decodeURIComponent(window.location.search);
-const transactionDetails = JSON.parse(decodedParams.replace('?', ''));
+const transactionDetails = JSON.parse(decodedParams?.replace('?', ''));
 
 (function setSettings() {
   if (transactionDetails.darkMode) {
