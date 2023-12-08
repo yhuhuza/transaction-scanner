@@ -27,17 +27,21 @@ const setLastTransaction = () => {
 const downloadPdf = async () => {
   await sendContentMessage({ action: 'openPdfWindow', data: { hashValue: transactionDetails.value?.hashValue } });
 };
+
+const TRANSACTION_DETAILS = [
+  transactionDetails.value?.transferredStatus, 
+  transactionDetails.value?.transferredValue,
+  transactionDetails.value?.transactionSymbol,
+  transactionDetails.value?.resultValue,
+  transactionDetails.value?.confirmedStatus,
+];
 </script>
 
 <template>
   <article class="mb-4 border border-neutral-300 p-3 rounded">
     <div class="small-bold-text dark:text-white">{{ formattedDate }}</div>
     <div class="flex items-center justify-between mt-2 dark-semibold-text">
-      <span class="dark:text-white">{{ transactionDetails?.transferredStatus }}</span>
-      <span class="dark:text-white">{{ transactionDetails?.transferredValue }}</span>
-      <span class="dark:text-white">{{ transactionDetails?.transactionSymbol }}</span>
-      <span class="dark:text-white">{{ transactionDetails?.resultValue }}</span>
-      <span class="dark:text-white">{{ transactionDetails?.confirmedStatus }}</span>
+      <span v-for="item, index in TRANSACTION_DETAILS" :key="index" class="dark:text-white">{{ item }}</span>
     </div>
     <div class="mt-4 flex items-center justify-between input-text">
       <button class="px-6 py-2 border rounded-lg dark:text-white" @click="setLastTransaction()">{{ t('history.details') }}</button>

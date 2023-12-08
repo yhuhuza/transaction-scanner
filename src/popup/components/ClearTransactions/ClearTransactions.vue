@@ -2,7 +2,8 @@
 import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-import { useTransactionsStore } from '../../stores/useTransactionsStore.ts';
+import { useTransactionsStore } from '../../stores/useTransactionsStore';
+import GoBackElement from '../GoBackElement/GoBackElement.vue';
 
 import ChoosenOption from './ChoosenOptions.vue';
 
@@ -19,14 +20,7 @@ const cancelClearnes = () => {
 </script>
 
 <template>
-  <div class="flex items-center">
-    <router-link class="w-10 h-10" to="/settings" >
-      <img class="h-full dark:invert" src="../../../assets/logo/arrow-back.svg" alt="arrow"/>
-    </router-link>
-    <h2 class="dark:text-white w-full pl-7 section-header text-black text-xl uppercase">
-      {{ t('delete.removeTransaction') }}
-    </h2>
-  </div>
+  <go-back-element :title="t('delete.removeTransaction')" path="/settings"></go-back-element>
   <div class="mb-6">
     <div class="flex items-center dark:text-white mt-11 subheader-text">
       <p>{{ t('delete.period') }}</p>

@@ -34,11 +34,11 @@ const submitButton = () => {
     <p class="mt-4">{{ t('support.assistMessage') }}</p>
     <div class="relative">
       <textarea 
-      v-model="eneteredText"
-      rows="10" 
-      class="w-full border rounded-lg mt-10 py-3 px-6 box-border resize-none !text-black"
-      :class="definedBorderColors"
-      :placeholder="t('support.placeholderMessage')"
+        v-model="eneteredText"
+        rows="10" 
+        class="w-full border rounded-lg mt-10 py-3 px-6 box-border resize-none !text-black"
+        :class="definedBorderColors"
+        :placeholder="t('support.placeholderMessage')"
       ></textarea>
       <p class="absolute bottom-2 right-2 mt-2 settings-text" :class="definedTextColors">
         {{ renderQuantityOfSymbols }}/500

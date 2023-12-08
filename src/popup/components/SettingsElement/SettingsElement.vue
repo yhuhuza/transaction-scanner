@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
 
+import GoBackElement from '../GoBackElement/GoBackElement.vue';
 import ToggleButton from '../ToggleButton/ToggleButton.vue';
 
 import SettingsMenu from './SettingsMenu.vue';
@@ -10,12 +11,7 @@ const { t } = useI18n();
 
 <template>
   <section class="dark:bg-dark-coal border-box">
-    <div class="flex items-center mb-7">
-      <router-link class="w-10 h-10" to="/index.html" >
-        <img class="h-full dark:invert" src="../../../assets/logo/arrow-back.svg" alt="arrow"/>
-      </router-link>
-      <h2 class="dark:text-white w-full pl-ef section-header text-black text-xl uppercase">{{ t('settings.title') }}</h2>
-    </div>
+    <go-back-element :title="t('settings.title')" path="/index.html"></go-back-element>
     <div class="mb-8 flex items-center justify-center">
       <div class="w-7 h-7 mr-5">
         <img class="h-full dark:invert" src="../../../assets/logo/theme-sun.svg" alt="moon" />
