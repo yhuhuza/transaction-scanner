@@ -1,13 +1,22 @@
 <script lang="ts" setup>
 import { jsPDF } from "jspdf";
+import { useI18n } from "vue-i18n";
 
 import LogoIcon from '../assets/logo/logo-icon.png';
 import { Y_COORDINATES, TERMS_ON_CHECK, SOCIAL_MEDIA } from '../utils/constants';
 
 const doc = new jsPDF();
+const { t, locale } = useI18n();
 
 const decodedParams = decodeURIComponent(window.location.search);
 const transactionDetails = JSON.parse(decodedParams.replace('?', ''));
+
+
+(function setLocale() {
+  if (locale) {
+    locale.value = transactionDetails.locale;
+  }
+})();
 
 const mainPartCheck = [ 
   `${transactionDetails.hashValue}`,
@@ -71,9 +80,7 @@ const downloadTransactionDetaild = () => {
       <div class="w-16 h-16 mr-max-gap ml-table-gap">
         <img src="../assets/logo/logo-icon.png" alt="logo" />
       </div>
-      <div class="download-page-header">
-        Transaction Details
-      </div>
+      <div class="download-page-header">{{ t('bill.title') }}</div>
     </div>
     <table class="dark-regular-text main-table">
       <tr 
@@ -90,7 +97,7 @@ const downloadTransactionDetaild = () => {
         class="uppercase rounded-lg download-button-text button-history py-5 px-24"
         @click="downloadTransactionDetaild()"
       >
-        Download pdf
+      {{ t('bill.download') }}
       </button>
     </div>
   </div>

@@ -7,7 +7,7 @@ import { ParsedTransaction } from '../../../types/scanner';
 import sendContentMessage from '../../../utils/tools/sendContentMessage';
 import { useTransactionsStore } from '../../stores/useTransactionsStore';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const props = defineProps<{ transaction?: ParsedTransaction }>();
 const router = useRouter();
 const transactionDetails = ref(props.transaction);
@@ -25,16 +25,16 @@ const setLastTransaction = () => {
 };
 
 const downloadPdf = async () => {
-  await sendContentMessage({ action: 'openPdfWindow', data: { hashValue: transactionDetails.value?.hashValue } });
+  await sendContentMessage({ action: 'openPdfWindow', data: { hashValue: transactionDetails.value?.hashValue, locale: locale.value } });
 };
 
-const TRANSACTION_DETAILS = [
+const TRANSACTION_DETAILS = computed(() => [
   transactionDetails.value?.transferredStatus, 
   transactionDetails.value?.transferredValue,
   transactionDetails.value?.transactionSymbol,
   transactionDetails.value?.resultValue,
   transactionDetails.value?.confirmedStatus,
-];
+]);
 </script>
 
 <template>

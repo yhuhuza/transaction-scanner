@@ -56,5 +56,9 @@
   },
   "placeholder": {
     "mainPageInput": "输入您的 txn 哈希值"
+  },
+  "bill": {
+    "title": "交易明细",
+    "download": "下载pdf"
   }
 }

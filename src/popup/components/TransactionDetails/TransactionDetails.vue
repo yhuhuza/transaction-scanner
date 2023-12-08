@@ -10,7 +10,7 @@ const transactionStore = useTransactionsStore();
 const { lastTransaction } = storeToRefs(transactionStore);
 
 const formattedDate = computed(() => new Date(lastTransaction.value?.timeRange));
-const TRANSACTION_DETAILS = [
+const TRANSACTION_DETAILS = computed(() => [
   { title: 'Account', data: `${lastTransaction.value?.accountFrom}`, style: '!text-pink' },
   { title: 'Transferred', data: `${lastTransaction.value?.transferredValue} ${lastTransaction.value?.transactionSymbol}`, style: '' },
   { title: 'To', data: `${lastTransaction.value?.accountTo}`, style: '' },
@@ -18,7 +18,7 @@ const TRANSACTION_DETAILS = [
   { title: 'Result', data: `${lastTransaction.value?.resultValue}`, style: '' },
   { title: 'Status', data: `${lastTransaction.value?.transferredStatus}`, style: '' },
   { title: 'Time', data: `${formattedDate.value}`, style: '' }
-];
+]);
 </script>
 
 <template>
@@ -27,7 +27,7 @@ const TRANSACTION_DETAILS = [
     <table class="dark-regular-text">
       <tr v-for="item in TRANSACTION_DETAILS" :key="item.title" class="mb-6">
         <td class="w-teh font-semibold dark:text-white">{{ item.title }}</td>
-        <td class="text-pink text-white dark:text-white" :class="item.style">{{ item.data }}</td>
+        <td class="dark:text-white" :class="item.style">{{ item.data }}</td>
       </tr>
     </table>
   </div>

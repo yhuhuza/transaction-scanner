@@ -56,5 +56,9 @@
   },
   "placeholder": {
     "mainPageInput": "Input your txn hash"
+  },
+  "bill": {
+    "title": "Transaction Details",
+    "download": "Download pdf"
   }
 }

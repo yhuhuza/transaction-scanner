@@ -88,9 +88,11 @@ export default class Scanner {
     });
   }
 
-  async openPdfWindow({ request }): Promise<void> {
-    const { hashValue } = request.data;
+  async openPdfWindow({ request }): Promise<void | boolean> {
+    const { hashValue, locale } = request.data;
     const foundTransaction = this.transactions.find((transaction) => transaction.hashValue === hashValue);
+    if (!foundTransaction?.hashValue) return false;
+    foundTransaction['locale'] = locale;
     const dataString = JSON.stringify(foundTransaction);
     browser.windows.create({ url: `./content/content.html?${encodeURIComponent(dataString)}` });
   }
