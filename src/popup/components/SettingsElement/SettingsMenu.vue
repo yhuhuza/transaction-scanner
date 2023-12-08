@@ -1,9 +1,50 @@
 <script lang="ts" setup>
+import { ref, Ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 
-import { SETTINGS_MENU } from '../../../utils/constants';
+import BitcoinImage from '../../../assets/logo/bitcoin-sign.svg';
+import GlobeImage from '../../../assets/logo/globe-sign.svg';
+import HelpImage from '../../../assets/logo/help-sign.svg';
+import RubbishImage from '../../../assets/logo/rubbish-sign.svg';
 
+const { t } = useI18n();
 const router = useRouter();
+
+interface SettingsMenuElements {
+  title: string;
+  image: string,
+  alt: string,  
+  path: string,
+};
+
+const SETTINGS_MENU: Ref<SettingsMenuElements[]> = ref([
+  {
+
+    title: `${t('settingMenu.language')}`,
+    image: GlobeImage,
+    alt: 'globe',
+    path: 'language',
+  },
+  {
+    title: `${t('settingMenu.delete')}`,
+    image: RubbishImage,
+    alt: 'rubbish',
+    path: '/cleartransactions',
+  },
+  {
+    title: `${t('settingMenu.converter')}`,
+    image: BitcoinImage,
+    alt: 'bitcoin',
+    path: '/converter',
+  },
+  {
+    title: `${t('settingMenu.help')}`,
+    image: HelpImage,
+    alt: 'help',
+    path: '/help',
+  }
+]);
 </script>
 
 <template>

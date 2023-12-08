@@ -47,5 +47,14 @@
     "exchangeRate": "The exchange rate of",
     "to": "to",
     "is": "is"
+  },
+  "settingMenu": {
+    "language": "Choose your language",
+    "delete": "Delete saved transactions",
+    "converter": "Choose your currency for comparison",
+    "help": "Help & Support"
+  },
+  "placeholder": {
+    "mainPageInput": "Input your txn hash"
   }
 }

@@ -50,7 +50,7 @@ const sendRequestToServer = () => {
         v-model="searchQuery"
         class="dark:bg-black dark:text-white outline-none input-text h-8 w-full"
         type="text"
-        placeholder="Input your txn hash"
+        :placeholder="t('placeholder.mainPageInput')"
         @input="handleInput"
       >
       <div v-if="!lastTransaction?.hashValue" class="ml-2">

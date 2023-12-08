@@ -47,5 +47,14 @@
     "exchangeRate": "Обменный курс",
     "to": "к",
     "is": ""
+  },
+  "settingMenu": {
+    "language": "Выберете язык",
+    "delete": "Удалить сохраненные транзакции",
+    "converter": "Выберете монеты для конвертации",
+    "help": "Поддержка"
+  },
+  "placeholder": {
+    "mainPageInput": "Вставьте ваш txn hash"
   }
 }

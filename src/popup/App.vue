@@ -1,3 +1,26 @@
+<script lang="ts" setup>
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useRoute } from 'vue-router';
+
+import HeaderElement from './components/HeaderElement/HeaderElement.vue';
+import MainPage from './components/MainPage/MainPage.vue';
+
+const { locale } = useI18n();
+const router = useRoute();
+
+const mainPage = computed(() => {
+  return router.path === '/' || router.path === '/index.html';
+});
+
+
+(function setLanguage(): false | void {
+  const language = localStorage.getItem("locale");
+  if (!language) return false;
+  locale.value = language;
+})();
+</script>
+
 <template>
   <div class="transaction-scanner">
     <Transition :name="router.meta.transition" mode="out-in">
@@ -9,21 +32,6 @@
     </Transition>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
-
-import HeaderElement from './components/HeaderElement/HeaderElement.vue';
-import MainPage from './components/MainPage/MainPage.vue';
-
-const router = useRoute();
-
-const mainPage = computed(() => {
-  return router.path === '/' || router.path === '/index.html';
-});
-
-</script>
 
 <style lang="scss">
 @tailwind base;

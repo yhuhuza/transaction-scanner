@@ -47,5 +47,14 @@
     "exchangeRate": "汇率为",
     "to": "到",
     "is": "是"
+  },
+  "settingMenu": {
+    "language": "选择语言",
+    "delete": "删除已保存的交易",
+    "converter": "选择要兑换的币种",
+    "help": "支持"
+  },
+  "placeholder": {
+    "mainPageInput": "输入您的 txn 哈希值"
   }
 }

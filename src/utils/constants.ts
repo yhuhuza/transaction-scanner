@@ -1,20 +1,9 @@
 import GitHub from '../assets/git-hub-qr.svg';
 import LinkedInLogo from '../assets/linked-in-qr.svg';
-import BitcoinImage from '../assets/logo/bitcoin-sign.svg';
 import ChinaLanguage from '../assets/logo/china-language.svg';
 import EnglishLanguage from '../assets/logo/english-language.svg';
-import GlobeImage from '../assets/logo/globe-sign.svg';
-import HelpImage from '../assets/logo/help-sign.svg';
-import RubbishImage from '../assets/logo/rubbish-sign.svg';
 import RussianLanguage from '../assets/logo/russian-language.svg';
 import TeleframQr from '../assets/telegram-qr.png';
-
-interface SettingsMenuElements {
-  title: string;
-  image: string,
-  alt: string,  
-  path: string,
-};
 
 interface NetworkElements {
   id: number;
@@ -28,32 +17,6 @@ interface LanguagesArray {
   title: string;
 }
 
-const SETTINGS_MENU: SettingsMenuElements[] = [
-  {
-    title: 'Choose your language',
-    image: GlobeImage,
-    alt: 'globe',
-    path: 'language',
-  },
-  {
-    title: 'Delete saved transactions',
-    image: RubbishImage,
-    alt: 'rubbish',
-    path: '/cleartransactions',
-  },
-  {
-    title: 'Choose your currency for comparison',
-    image: BitcoinImage,
-    alt: 'bitcoin',
-    path: '/converter',
-  },
-  {
-    title: 'Help & Support',
-    image: HelpImage,
-    alt: 'help',
-    path: '/help',
-  }
-];
 
 const NETWORK_ELEMENTS: NetworkElements[]  = [
   { id: 1, title: 'Bitcoin', net: 'bit' },
@@ -120,7 +83,6 @@ const SOCIAL_MEDIA = [
 ];
 
 export {
-  SETTINGS_MENU,
   NETWORK_ELEMENTS,
   LANGUAGES_ARRAY,
   Y_COORDINATES,
