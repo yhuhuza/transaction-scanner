@@ -89,10 +89,11 @@ export default class Scanner {
   }
 
   async openPdfWindow({ request }): Promise<void | boolean> {
-    const { hashValue, locale } = request.data;
+    const { hashValue, locale, isDarkMode } = request.data;
     const foundTransaction = this.transactions.find((transaction) => transaction.hashValue === hashValue);
     if (!foundTransaction?.hashValue) return false;
     foundTransaction['locale'] = locale;
+    foundTransaction['darkMode'] = isDarkMode;
     const dataString = JSON.stringify(foundTransaction);
     browser.windows.create({ url: `./content/content.html?${encodeURIComponent(dataString)}` });
   }

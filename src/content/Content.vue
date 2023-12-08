@@ -11,9 +11,12 @@ const { t, locale } = useI18n();
 const decodedParams = decodeURIComponent(window.location.search);
 const transactionDetails = JSON.parse(decodedParams.replace('?', ''));
 
-
-(function setLocale() {
-  if (locale) {
+(function setSettings() {
+  if (transactionDetails.darkMode) {
+    const bodyObject = document.querySelector('body');
+    bodyObject.setAttribute("class", "dark");
+  }
+  if (locale && transactionDetails.locale) {
     locale.value = transactionDetails.locale;
   }
 })();
@@ -80,7 +83,7 @@ const downloadTransactionDetaild = () => {
       <div class="w-16 h-16 mr-max-gap ml-table-gap">
         <img src="../assets/logo/logo-icon.png" alt="logo" />
       </div>
-      <div class="download-page-header">{{ t('bill.title') }}</div>
+      <div class="download-page-header dark:text-white">{{ t('bill.title') }}</div>
     </div>
     <table class="dark-regular-text main-table">
       <tr 
@@ -88,8 +91,8 @@ const downloadTransactionDetaild = () => {
         :key="index" 
         class="mb-table-gap main-table"
       >
-        <td class="w-teh download-subheader">{{ TERMS_ON_CHECK[index] }}</td>
-        <td class="download-main-text hashValue">{{ item }}</td>
+        <td class="w-teh download-subheader dark:text-white">{{ TERMS_ON_CHECK[index] }}</td>
+        <td class="download-main-text hashValue dark:text-white">{{ item }}</td>
       </tr>
     </table>
     <div class="flex item-center justify-center mt-16">

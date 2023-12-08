@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useDark } from '@vueuse/core';
 import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
@@ -12,6 +13,12 @@ const props = defineProps<{ transaction?: ParsedTransaction }>();
 const router = useRouter();
 const transactionDetails = ref(props.transaction);
 const transactionStore = useTransactionsStore();
+const isDark = useDark({
+  selector: "body",
+  attribute: "class",
+  valueDark: "dark",
+  valueLight: "light",
+});
 
 const formattedDate = computed(() => {
   const rawDate = new Date(transactionDetails.value?.timeRange);
@@ -24,8 +31,16 @@ const setLastTransaction = () => {
   router.push('/index.html');
 };
 
+
 const downloadPdf = async () => {
-  await sendContentMessage({ action: 'openPdfWindow', data: { hashValue: transactionDetails.value?.hashValue, locale: locale.value } });
+  await sendContentMessage({ 
+    action: 'openPdfWindow', 
+    data: { 
+      hashValue: transactionDetails.value?.hashValue, 
+      locale: locale.value,
+      isDarkMode: isDark.value
+    } 
+  });
 };
 
 const TRANSACTION_DETAILS = computed(() => [
